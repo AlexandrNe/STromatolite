@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Stromatolite.Models
+namespace Stromatolite.Areas.UserAccount.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

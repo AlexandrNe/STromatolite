@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Stromatolite.Models
+namespace Stromatolite.Areas.UserAccount.Models
 {
     public class IndexViewModel
     {

@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Stromatolite.Models;
 
-namespace Stromatolite.Controllers
+namespace Stromatolite.Areas.UserAccount.Controllers
 {
     [Authorize]
     public class AccountController : Controller
