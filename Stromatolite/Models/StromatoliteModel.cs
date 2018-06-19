@@ -13,7 +13,7 @@
         // Если требуется выбрать другую базу данных или поставщик базы данных, измените строку подключения "StromatoliteModel" 
         // в файле конфигурации приложения.
         public StromatoliteModel()
-            : base("name=StromatoliteModel")
+            : base("name=DefaultConnection")
         {
         }
 
