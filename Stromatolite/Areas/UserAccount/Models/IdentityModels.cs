@@ -29,5 +29,6 @@ namespace Stromatolite.Areas.UserAccount.Models
         {
             return new ApplicationDbContext();
         }
+
     }
 }

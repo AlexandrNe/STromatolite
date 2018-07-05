@@ -164,6 +164,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDbMigrations\201806190214599_Acc.cs" />
+    <Compile Include="ApplicationDbMigrations\201806190214599_Acc.Designer.cs">
+      <DependentUpon>201806190214599_Acc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationDbMigrations\Configuration.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -184,26 +189,65 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\StromatoliteModel.cs" />
+    <Compile Include="StromatoliteModelMigrations\201806190232144_SM.cs" />
+    <Compile Include="StromatoliteModelMigrations\201806190232144_SM.Designer.cs">
+      <DependentUpon>201806190232144_SM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StromatoliteModelMigrations\Configuration.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\revolution-slider\assets\arrow_large_left.png" />
+    <Content Include="Content\revolution-slider\assets\arrow_large_right.png" />
+    <Content Include="Content\revolution-slider\assets\bg1.jpg" />
+    <Content Include="Content\revolution-slider\assets\bg2.jpg" />
+    <Content Include="Content\revolution-slider\assets\bg3.jpg" />
+    <Content Include="Content\revolution-slider\assets\bg4.jpg" />
+    <Content Include="Content\revolution-slider\assets\bullet.png" />
+    <Content Include="Content\revolution-slider\assets\bullets.png" />
+    <Content Include="Content\revolution-slider\assets\bullets2.png" />
+    <Content Include="Content\revolution-slider\assets\bullet_boxed.png" />
+    <Content Include="Content\revolution-slider\assets\loader.gif" />
+    <Content Include="Content\revolution-slider\assets\navigdots.png" />
+    <Content Include="Content\revolution-slider\assets\timer.png" />
+    <Content Include="Content\revolution-slider\assets\transparent-bg.png" />
+    <Content Include="Content\revolution-slider\assets\transparent.png" />
+    <Content Include="Content\revolution-slider\css\revolution-slider.css" />
+    <Content Include="Content\revolution-slider\font\revicons.svg" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\UserAccount\Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\revolution-slider\font\revicons.eot" />
+    <Content Include="Content\revolution-slider\font\revicons.ttf" />
+    <Content Include="Content\revolution-slider\font\revicons.woff" />
+    <None Include="Scripts\jquery-1.11.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.11.2.js" />
+    <Content Include="Scripts\jquery-1.11.2.min.js" />
+    <Content Include="Scripts\jquery-1.11.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\libs\detectizr.min.js" />
+    <Content Include="Scripts\libs\jquery.easing.min.js" />
+    <Content Include="Scripts\libs\jquery.mobile.custom.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -242,6 +286,8 @@
     <Content Include="Areas\UserAccount\Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_Slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -249,14 +295,20 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\UserAccount\Views\Shared\" />
+    <Folder Include="img\logo\" />
+    <Folder Include="Scripts\plugins\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ApplicationDbMigrations\201806190214599_Acc.resx">
+      <DependentUpon>201806190214599_Acc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201806190232144_SM.resx">
+      <DependentUpon>201806190232144_SM.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
