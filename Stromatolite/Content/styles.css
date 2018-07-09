@@ -11256,8 +11256,8 @@ hr.no-space {
 }
 .logo img {
   width: 100%;
-  max-width: 48px;
-  margin-right: 16px;
+  max-width: 100px;
+  margin-right: 2px;
 }
 .logo:hover,
 .logo:focus {

@@ -1,24 +1,130 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+﻿  /* :: 23.0 Gallery Area CSS */
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+    .gallery_menu .portfolio-menu button {
+        background-color: transparent;
+        border: medium none;
+        box-shadow: none;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 0 5px;
+        position: relative;
+        text-transform: uppercase;
+    }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
+    .gallery_menu .portfolio-menu button:hover,
+    .gallery_menu .portfolio-menu button.active,
+    .gallery_menu .portfolio-menu button:focus {
+        color: #27ae60;
+    }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
+    .gallery_menu .portfolio-menu button.active:before {
+        background-color: #27ae60;
+        border-radius: 0;
+        bottom: -5px;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .portfolio-menu {
+        margin-bottom: 30px;
+    }
+
+    .single_gallery_item {
+        display: inline-block;
+        float: left;
+        width: 25%;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .column_single_gallery_item {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .single_gallery_item img {
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15);
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        width: 100%;
+    }
+
+    .column_single_gallery_item img {
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    .single_gallery_item:hover img {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    .single_gallery_item .hover_overlay,
+    .column_single_gallery_item .hover_overlay {
+        background-color: rgba(255, 255, 255, 0.9);
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        position: absolute;
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        border-radius: 5px;
+        left: 30px;
+        right: 30px;
+        top: 15px;
+        bottom: 15px;
+        width: calc(100% - 60px);
+        height: calc(100% - 30px);
+    }
+
+    .single_gallery_item .hover_overlay,
+    .no-gutters .single_gallery_item .hover_overlay,
+    .no-gutters .column_single_gallery_item .hover_overlay {
+        left: 15px;
+        right: 15px;
+        top: 15px;
+        bottom: 15px;
+        width: calc(100% - 30px);
+        height: calc(100% - 30px);
+    }
+
+    .single_gallery_item:hover .hover_overlay,
+    .column_single_gallery_item:hover .hover_overlay {
+        opacity: 1;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    }
+
+    .single_gallery_item .gallery_info,
+    .column_single_gallery_item .gallery_info {
+        text-align: center;
+    }
+
+    .single_gallery_item:hover .gallery_info {
+        -webkit-animation: zoomIn 350ms ease-in-out;
+        animation: zoomIn 350ms ease-in-out;
+    }
+
+    .gallery_info h6 {
+        display: inline-block;
+        text-transform: uppercase;
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        letter-spacing: 3px;
+        font-size: 14px;
+    }
+
+    .gallery_info p {
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        font-size: 13px;
+        text-transform: uppercase;
+    }
+
+    .single_gallery_item_info .headline > h5 {
+        margin-bottom: 5px;
+    }

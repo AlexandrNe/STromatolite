@@ -27,6 +27,9 @@
         // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
 
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Offer> Offers { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<Unit> Units { get; set; }
     }
 
     //public class MyEntity

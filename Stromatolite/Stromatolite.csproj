@@ -185,13 +185,16 @@
     <Compile Include="Areas\UserAccount\Models\AccountViewModels.cs" />
     <Compile Include="Areas\UserAccount\Models\IdentityModels.cs" />
     <Compile Include="Areas\UserAccount\Models\ManageViewModels.cs" />
+    <Compile Include="Models\Entities\Currency.cs" />
+    <Compile Include="Models\Entities\Offer.cs" />
     <Compile Include="Models\Entities\Product.cs" />
+    <Compile Include="Models\Entities\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\StromatoliteModel.cs" />
-    <Compile Include="StromatoliteModelMigrations\201806190232144_SM.cs" />
-    <Compile Include="StromatoliteModelMigrations\201806190232144_SM.Designer.cs">
-      <DependentUpon>201806190232144_SM.cs</DependentUpon>
+    <Compile Include="StromatoliteModelMigrations\201807071510509_sm.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807071510509_sm.Designer.cs">
+      <DependentUpon>201807071510509_sm.cs</DependentUpon>
     </Compile>
     <Compile Include="StromatoliteModelMigrations\Configuration.cs" />
   </ItemGroup>
@@ -249,8 +252,18 @@
     <Content Include="Scripts\libs\jquery.easing.min.js" />
     <Content Include="Scripts\libs\jquery.mobile.custom.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\plugins\imagesloaded.pkgd.min.js" />
+    <Content Include="Scripts\plugins\isotope.pkgd.min.js" />
+    <Content Include="Scripts\plugins\jquery.stellar.min.js" />
+    <Content Include="Scripts\plugins\owl.carousel.js" />
+    <Content Include="Scripts\plugins\waves.min.js" />
+    <Content Include="Scripts\plugins\waypoints.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\revolution-slider.min.js" />
+    <Content Include="Scripts\rs-tools.min.js" />
+    <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\waves.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -296,7 +309,6 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\UserAccount\Views\Shared\" />
     <Folder Include="img\logo\" />
-    <Folder Include="Scripts\plugins\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -306,8 +318,8 @@
     <EmbeddedResource Include="ApplicationDbMigrations\201806190214599_Acc.resx">
       <DependentUpon>201806190214599_Acc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StromatoliteModelMigrations\201806190232144_SM.resx">
-      <DependentUpon>201806190232144_SM.cs</DependentUpon>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807071510509_sm.resx">
+      <DependentUpon>201807071510509_sm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
