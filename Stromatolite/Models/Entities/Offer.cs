@@ -12,10 +12,23 @@ namespace Stromatolite.Models
 
         public Guid ProductID { get; set; }
 
+        [DisplayName("Кол-во")]
+        [Required]
         public Nullable<int> Quantity { get; set; }
+
+        [DisplayName("Ед.")]
+        [Required]
         public int UnitID { get; set; }
+
+        [DisplayName("Валюта")]
+        [Required]
         public int CurrencyID { get; set; }
+
+        [DisplayName("Цена")]
+        [Required]
         public decimal Price { get; set; }
+
+        [DisplayName("Старая цена")]
         public Nullable<decimal> OldPrice { get; set; }
 
         public virtual Currency Currency { get; set; }

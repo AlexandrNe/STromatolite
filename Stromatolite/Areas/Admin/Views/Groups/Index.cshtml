@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Stromatolite.Models.Group>
+
+@{
+    ViewBag.Title = "Редактирование групп товара";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Добавить группу", "Create", new { area = "Admin"}, new { @class = "btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SEOurl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ord)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SEOurl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.GroupID }) |
+            @Html.ActionLink("Просмотр", "Details", new { id=item.GroupID }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.GroupID })
+        </td>
+    </tr>
+}
+
+</table>

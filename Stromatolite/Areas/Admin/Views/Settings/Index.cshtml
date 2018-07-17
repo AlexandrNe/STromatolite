@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Общие настройки";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#general" data-toggle="tab">Основные настройки</a></li>
+    <li><a href="#currency" data-toggle="tab">Валюта</a></li>
+    <li><a href="#unit" data-toggle="tab">Ед. измерения</a></li>
+    <li><a href="#pricetype" data-toggle="tab">Типы цен</a></li>
+    <li><a href="#customer-groups" data-toggle="tab">Группы покупателей</a></li>
+    <li><a href="#gal-categories" data-toggle="tab">Виды галерей</a></li>
+    @*<li><a href="#characteristics" data-toggle="tab">Виды характеристик</a></li>*@
+</ul>
+<div class="tab-content">
+
+    <div class="tab-pane fade in active" id="general">
+        <div class="container">
+            <div class="row">
+                @Ajax.ActionLink("Добавить", "Create", "GeneralSettings", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-general", OnSuccess = "$('#generalModal').modal('show')", OnFailure = "$('#generalModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
+                <div id="tab-general">
+                   @* @{Html.RenderAction("_Index", "GeneralSettings", new { area = "Admin" });}*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="currency">
+        <div class="container">
+            <div class="row">
+                @Ajax.ActionLink("Добавить", "Create", "Currencies", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-currency", OnSuccess = "$('#currencyModal').modal('show')", OnFailure = "$('#currencyModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
+                <div id="tab-currency">
+                    @{Html.RenderAction("_Index", "Currencies", new { area = "Admin" });}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="unit">
+        <div class="container">
+            <div class="row">
+                @Ajax.ActionLink("Добавить", "Create", "Units", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-unit", OnSuccess = "$('#unitModal').modal('show')", OnFailure = "$('#unitModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
+                <div id="tab-unit">
+                    @{Html.RenderAction("_Index", "Units", new { area = "Admin" });}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="pricetype">
+        <div class="container">
+            <div class="row">
+                @Ajax.ActionLink("Добавить", "Create", "PriceTypes", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-pricetype", OnSuccess = "$('#pricetypeModal').modal('show')", OnFailure = "$('#pricetypeModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
+                <div id="tab-pricetype">
+                    @*@{Html.RenderAction("_Index", "PriceTypes", new { area = "Admin" });}*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="customer-groups">
+        <div class="container">
+            <div class="row">
+                @Ajax.ActionLink("Добавить", "Create", "CustomerGroups", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-cg", OnSuccess = "$('#cgModal').modal('show')", OnFailure = "$('#cgModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
+                <div id="tab-cg">
+                   @* @{Html.RenderAction("_Index", "CustomerGroups", new { area = "Admin" });}*@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="gal-categories">
+        <div class="container">
+            <div class="row">
+                @Ajax.ActionLink("Добавить", "Create", "GalCategories", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-galcat", OnSuccess = "$('#galcatModal').modal('show')", OnFailure = "$('#galcatModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
+                <div id="tab-galcat">
+                 @*   @{Html.RenderAction("_Index", "GalCategories", new { area = "Admin" });}*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,28 +1,32 @@
 ﻿@model IEnumerable<Stromatolite.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Продукция";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Новый", "Create", new { area = "Admin"}, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+<table class="table table-bordered table-hover table-responsive table-striped">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ord)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Article)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TitleFull)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Article)
-        </th>
-        <th>
+       
+        @*<th>
             @Html.DisplayNameFor(model => model.Description)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.SEOurl)
         </th>
@@ -38,26 +42,28 @@
         <th>
             @Html.DisplayNameFor(model => model.KeyWords)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sort)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderBy(d => d.Ord).ThenBy(d => d.Title)) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sort)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Article)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TitleFull)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Article)
-        </td>
-        <td>
+
+        @*<td>
             @Html.DisplayFor(modelItem => item.Description)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.SEOurl)
         </td>
@@ -73,13 +79,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.KeyWords)
         </td>
+  
         <td>
-            @Html.DisplayFor(modelItem => item.Sort)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+            @Html.ActionLink("редактировать", "Edit", new { id=item.ProductID }) |
+            @Html.ActionLink("Просмотр", "Details", new { id=item.ProductID }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ProductID })
         </td>
     </tr>
 }

@@ -175,18 +175,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\OffersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CurrenciesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GroupsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UnitsController.cs" />
     <Compile Include="Areas\UserAccount\UserAccountAreaRegistration.cs" />
     <Compile Include="Areas\UserAccount\Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\UserAccount\Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OffersController.cs" />
     <Compile Include="DAL\DataAccessLayer.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
     <Compile Include="DAL\IGenericRepository.cs" />
-    <Compile Include="DAL\IUserActivityRepository.cs" />
     <Compile Include="DAL\UnitOfWork.cs" />
-    <Compile Include="DAL\UserActivityRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,12 +199,28 @@
     <Compile Include="Models\Entities\Offer.cs" />
     <Compile Include="Models\Entities\Product.cs" />
     <Compile Include="Models\Entities\Unit.cs" />
+    <Compile Include="Models\Entities\Group.cs" />
+    <Compile Include="Models\Entities\Gallery.cs" />
+    <Compile Include="Models\Entities\GalCategory.cs" />
+    <Compile Include="Models\Entities\Picture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\StromatoliteModel.cs" />
-    <Compile Include="StromatoliteModelMigrations\201807071510509_sm.cs" />
-    <Compile Include="StromatoliteModelMigrations\201807071510509_sm.Designer.cs">
-      <DependentUpon>201807071510509_sm.cs</DependentUpon>
+    <Compile Include="StromatoliteModelMigrations\201807161210300_v1.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807161210300_v1.Designer.cs">
+      <DependentUpon>201807161210300_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StromatoliteModelMigrations\201807171042241_v2.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807171042241_v2.Designer.cs">
+      <DependentUpon>201807171042241_v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StromatoliteModelMigrations\201807171117171_v3.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807171117171_v3.Designer.cs">
+      <DependentUpon>201807171117171_v3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StromatoliteModelMigrations\201807171218254_v4.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807171218254_v4.Designer.cs">
+      <DependentUpon>201807171218254_v4.cs</DependentUpon>
     </Compile>
     <Compile Include="StromatoliteModelMigrations\Configuration.cs" />
   </ItemGroup>
@@ -257,6 +275,26 @@
     <Content Include="Areas\Admin\Views\Products\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Settings\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Navbar.cshtml" />
+    <Content Include="Areas\Admin\Views\Units\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Units\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Units\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Units\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Units\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Units\_Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Currencies\_Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Groups\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Groups\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Groups\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Groups\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Groups\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\reg.ru.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -289,7 +327,9 @@
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\waves.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -325,6 +365,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_Slider.cshtml" />
+    <Content Include="Views\Offers\Index.cshtml" />
+    <Content Include="Views\Shared\_Topbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -340,8 +382,17 @@
     <EmbeddedResource Include="ApplicationDbMigrations\201806190214599_Acc.resx">
       <DependentUpon>201806190214599_Acc.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StromatoliteModelMigrations\201807071510509_sm.resx">
-      <DependentUpon>201807071510509_sm.cs</DependentUpon>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807161210300_v1.resx">
+      <DependentUpon>201807161210300_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807171042241_v2.resx">
+      <DependentUpon>201807171042241_v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807171117171_v3.resx">
+      <DependentUpon>201807171117171_v3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807171218254_v4.resx">
+      <DependentUpon>201807171218254_v4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

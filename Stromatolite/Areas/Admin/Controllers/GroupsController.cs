@@ -12,93 +12,51 @@ using Stromatolite.DAL;
 
 namespace Stromatolite.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "admin")]
-    public class ProductsController : Controller
+    public class GroupsController : Controller
     {
         private DataAccessLayer DAL = new DataAccessLayer();
 
-        // GET: Admin/Products
+        // GET: Admin/Groups
         public async Task<ActionResult> Index()
         {
-            var products = await DAL.uof.ProductRepository.GetAsync(orderBy: q => q.OrderBy(d => d.Ord));
-            return View(products);
+            var groups = await DAL.uof.GroupRepository.GetAsync(orderBy: q => q.OrderBy(d => d.Ord).ThenBy(d => d.Title));
+            return View(groups);
         }
 
-        // GET: Admin/Products/Details/5
+        // GET: Admin/Groups/Details/5
         public async Task<ActionResult> Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await DAL.uof.ProductRepository.GetByIDAsync(id);
-            if (product == null)
+            Group group = await DAL.uof.GroupRepository.GetByIDAsync(id);
+            if (group == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(group);
         }
 
-        // GET: Admin/Products/Create
+        // GET: Admin/Groups/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Products/Create
+        // POST: Admin/Groups/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductID,Title,TitleFull,Article,Description,SEOurl,Active,Tags,MetaDescription,KeyWords,Ord")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "GroupID,Title,Description,SEOurl,Active,Ord")] Group group)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    product.ProductID = Guid.NewGuid();
-                    DAL.uof.ProductRepository.Insert(product);
-                    await DAL.uof.SaveAsync();
-                    return RedirectToAction("Index");
-                }
-                catch (Exception)
-                {
-
-                    ModelState.AddModelError("", "Ошибка БД");
-                }
-
-            }
-
-            return View(product);
-        }
-
-        // GET: Admin/Products/Edit/5
-        public async Task<ActionResult> Edit(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = await DAL.uof.ProductRepository.GetByIDAsync(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        // POST: Admin/Products/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,Title,TitleFull,Article,Description,SEOurl,Active,Tags,MetaDescription,KeyWords,Ord")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    DAL.uof.ProductRepository.Update(product);
+                    group.GroupID = Guid.NewGuid();
+                    DAL.uof.GroupRepository.Insert(group);
                     await DAL.uof.SaveAsync();
                     return RedirectToAction("Index");
                 }
@@ -106,36 +64,76 @@ namespace Stromatolite.Areas.Admin.Controllers
                 {
 
                     ModelState.AddModelError("", "Ошибка БД...");
-
                 }
                 
             }
-            return View(product);
+
+            return View(group);
         }
 
-        // GET: Admin/Products/Delete/5
+        // GET: Admin/Groups/Edit/5
+        public async Task<ActionResult> Edit(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Group group = await DAL.uof.GroupRepository.GetByIDAsync(id);
+            if (group == null)
+            {
+                return HttpNotFound();
+            }
+            return View(group);
+        }
+
+        // POST: Admin/Groups/Edit/5
+        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
+        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit([Bind(Include = "GroupID,Title,Description,SEOurl,Active,Ord")] Group group)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    DAL.uof.GroupRepository.Update(group);
+                    await DAL.uof.SaveAsync();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception)
+                {
+
+                    ModelState.AddModelError("", "Ошибка БД...");
+                }
+                
+            }
+            return View(group);
+        }
+
+        // GET: Admin/Groups/Delete/5
         public async Task<ActionResult> Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await DAL.uof.ProductRepository.GetByIDAsync(id);
-            if (product == null)
+            Group group = await DAL.uof.GroupRepository.GetByIDAsync(id);
+            if (group == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(group);
         }
 
-        // POST: Admin/Products/Delete/5
+        // POST: Admin/Groups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
             try
             {
-                DAL.uof.ProductRepository.Delete(id);
+                DAL.uof.GroupRepository.Delete(id); 
                 await DAL.uof.SaveAsync();
             }
             catch (Exception)
@@ -143,10 +141,10 @@ namespace Stromatolite.Areas.Admin.Controllers
 
                 ModelState.AddModelError("", "Ошибка БД...");
             }
-
+            
             return RedirectToAction("Index");
         }
 
-      
+        
     }
 }

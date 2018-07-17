@@ -13,6 +13,7 @@ namespace Stromatolite.DAL
         
         private GenericRepository<Currency> currencyRepository;
         private GenericRepository<Offer> offerRepository;
+        private GenericRepository<Group> groupRepository;
         private GenericRepository<Product> productRepository;
         private GenericRepository<Unit> unitRepository;
 
@@ -44,6 +45,17 @@ namespace Stromatolite.DAL
             }
         }
 
+        public GenericRepository<Group> GroupRepository
+        {
+            get
+            {
+                if (this.groupRepository == null)
+                {
+                    this.groupRepository = new GenericRepository<Group>(context);
+                }
+                return groupRepository;
+            }
+        }
 
         public GenericRepository<Product> ProductRepository
         {

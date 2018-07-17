@@ -7,13 +7,13 @@ namespace Stromatolite.StromatoliteModelMigrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class sm : IMigrationMetadata
+    public sealed partial class v4 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(sm));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(v4));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807071510509_sm"; }
+            get { return "201807171218254_v4"; }
         }
         
         string IMigrationMetadata.Source

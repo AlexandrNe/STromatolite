@@ -128,3 +128,12 @@
     .single_gallery_item_info .headline > h5 {
         margin-bottom: 5px;
     }
+
+
+
+    /**********************************/
+    .control-label{
+        display: inline;
+        position: relative;
+        margin: 0;
+    }

@@ -10,6 +10,8 @@ namespace Stromatolite.Models
         [Key]
         public Guid ProductID { get; set; }
 
+        public Guid GroupID { get; set; }
+
         [DisplayName("Название")]
         [StringLength(200)]
         [Required]
@@ -28,6 +30,9 @@ namespace Stromatolite.Models
         [AllowHtml]
         public string Description { get; set; }
 
+        [DisplayName("Галерея")]
+        public Nullable<System.Guid> GalleryID { get; set; }
+
         [DisplayName("ЧПУ")]
         public string SEOurl { get; set; }
 
@@ -43,14 +48,17 @@ namespace Stromatolite.Models
         [StringLength(300)]
         public string MetaDescription { get; set; }
 
-        [DisplayName("MetaDescription")]
+        [DisplayName("KeyWords")]
         [StringLength(200)]
         public string KeyWords { get; set; }
 
-        [DisplayName("Индекс сортировки")]
+        [DisplayName("Порядок")]
         [Required]
         [DefaultValue(500)]
-        public int Sort { get; set; }
+        public int Ord { get; set; }
+
+        public virtual Group Group { get; set; }
+        public virtual Gallery Gallery { get; set; }
 
     }
 }
