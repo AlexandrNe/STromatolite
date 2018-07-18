@@ -12,8 +12,11 @@ namespace Stromatolite.DAL
         private StromatoliteModel context = new StromatoliteModel();
         
         private GenericRepository<Currency> currencyRepository;
-        private GenericRepository<Offer> offerRepository;
+        private GenericRepository<GalCategory> galCategoryRepository;
+        private GenericRepository<Gallery> galleryRepository;
         private GenericRepository<Group> groupRepository;
+        private GenericRepository<Offer> offerRepository;
+        private GenericRepository<Picture> pictureRepository;
         private GenericRepository<Product> productRepository;
         private GenericRepository<Unit> unitRepository;
 
@@ -32,6 +35,41 @@ namespace Stromatolite.DAL
             }
         }
 
+        public GenericRepository<GalCategory> GalCategoryRepository
+        {
+            get
+            {
+                if (this.galCategoryRepository== null)
+                {
+                    this.galCategoryRepository = new GenericRepository<GalCategory>(context);
+                }
+                return galCategoryRepository;
+            }
+        }
+
+        public GenericRepository<Gallery> GalleryRepository
+        {
+            get
+            {
+                if (this.galleryRepository == null)
+                {
+                    this.galleryRepository = new GenericRepository<Gallery>(context);
+                }
+                return galleryRepository;
+            }
+        }
+
+        public GenericRepository<Group> GroupRepository
+        {
+            get
+            {
+                if (this.groupRepository == null)
+                {
+                    this.groupRepository = new GenericRepository<Group>(context);
+                }
+                return groupRepository;
+            }
+        }
 
         public GenericRepository<Offer> OfferRepository
         {
@@ -45,15 +83,15 @@ namespace Stromatolite.DAL
             }
         }
 
-        public GenericRepository<Group> GroupRepository
+        public GenericRepository<Picture> PictureRepository
         {
             get
             {
-                if (this.groupRepository == null)
+                if (this.pictureRepository == null)
                 {
-                    this.groupRepository = new GenericRepository<Group>(context);
+                    this.pictureRepository = new GenericRepository<Picture>(context);
                 }
-                return groupRepository;
+                return pictureRepository;
             }
         }
 
@@ -81,8 +119,6 @@ namespace Stromatolite.DAL
                 return unitRepository;
             }
         }
-
-
 
 
         /*******************************************************************************************************************************************/

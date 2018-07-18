@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Stromatolite.ViewModels.OfferViewModel
+@{
 //ViewBag.Title = "Home Page";
 }
 <!-- ***** Project area start ***** -->
@@ -13,35 +14,49 @@
     <div class="gallery_menu">
         <div class="text-center portfolio-menu">
             <button class="active btn" type="button" data-filter="*">Все</button>
-            <button class="btn" type="button" data-filter=".web">Лемезит</button>
-            <button class="btn" type="button" data-filter=".art">Златолит</button>
+            @foreach (var group in Model.Groups)
+            {
+                <button class="btn" type="button" data-filter=".@group.GroupID">@group.Title</button>
+            }
+
+            
+            @*<button class="btn" type="button" data-filter=".art">Златолит</button>
             <button class="btn" type="button" data-filter=".bra">Черный сланец</button>
             <button class="btn" type="button" data-filter=".app">Пиленый</button>
             <button class="btn" type="button" data-filter=".app">Галтованный</button>
-            <button class="btn" type="button" data-filter=".app">Валуны</button>
+            <button class="btn" type="button" data-filter=".app">Валуны</button>*@
         </div>
     </div>
 
     <div class="gallery_full_width_images_area clearfix">
-        <!-- Single gallery Item Start -->
-        <div class="single_gallery_item app">
-            <img src="img/gallery/1.jpg" alt="">
-            <!-- Single gallery Item hover caption -->
-            <div class="hover_overlay">
-                <div class="classy-table">
-                    <div class="classy-table-cell">
-                        <div class="gallery_info">
-                            <h6>Наименование</h6>
-                            <p>Подробнее</p>
-                        </div>
-                        <div class="more_details text-center">
-                            <a class="gallery_img" href="img/gallery/1.jpg"><i class="glyphicon glyphicon-search"></i></a>
+        
+        @foreach (var offer in Model.Offers)
+        {
+            <!-- Single gallery Item Start -->
+            <div class="single_gallery_item @offer.Product.GroupID">
+                @if (offer.Product.Gallery.Pictures.Any())
+                {
+                    <img src="@Url.Content(offer.Product.Gallery.Pictures.OrderBy(d => d.Ord).FirstOrDefault().PicUrl)" alt="@offer.Product.TitleFull">
+                }
+                <img src="~img/gallery/1.jpg" alt="">
+                <!-- Single gallery Item hover caption -->
+                <div class="hover_overlay">
+                    <div class="classy-table">
+                        <div class="classy-table-cell">
+                            <div class="gallery_info">
+                                <h6>@offer.Product.Title</h6>
+                                <p>Подробнее</p>
+                            </div>
+                            <div class="more_details text-center">
+                                <a class="gallery_img" href="img/gallery/1.jpg"><i class="glyphicon glyphicon-search"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        }
+        
         <!-- Single gallery Item Start -->
         <div class="single_gallery_item art">
             <img src="img/gallery/2.jpg" alt="">

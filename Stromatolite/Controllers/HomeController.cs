@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stromatolite.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,9 @@ namespace Stromatolite.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            OfferViewModel offerViewModel = new OfferViewModel();
+
+            return View(offerViewModel);
         }
 
         public ActionResult About()
