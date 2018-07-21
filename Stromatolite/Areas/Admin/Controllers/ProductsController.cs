@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Stromatolite.Models;
 using Stromatolite.DAL;
@@ -71,6 +68,15 @@ namespace Stromatolite.Areas.Admin.Controllers
                                                                 Price = 1,
                                                                 ProductID = product.ProductID,
                                                                 Quantity = 1});
+
+                    DAL.uof.PictureRepository.Insert(new Picture
+                                                                {
+                                                                    PictureID = Guid.NewGuid(),
+                                                                    GalleryID = galleryID,
+                                                                    Ord = 100,
+                                                                    PicUrl = "~/img"
+                                                                });
+
                     await DAL.uof.SaveAsync();
                     return RedirectToAction("Index");
                 }

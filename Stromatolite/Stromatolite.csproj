@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gif.Components, Version=0.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Gif.Components.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -179,6 +183,7 @@
     <Compile Include="Areas\Admin\Controllers\GalCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OffersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UnitsController.cs" />
@@ -198,6 +203,7 @@
     <Compile Include="Areas\UserAccount\Models\AccountViewModels.cs" />
     <Compile Include="Areas\UserAccount\Models\IdentityModels.cs" />
     <Compile Include="Areas\UserAccount\Models\ManageViewModels.cs" />
+    <Compile Include="Helpers\ImageHelpers.cs" />
     <Compile Include="Models\Entities\Currency.cs" />
     <Compile Include="Models\Entities\Offer.cs" />
     <Compile Include="Models\Entities\Product.cs" />
@@ -224,6 +230,10 @@
     <Compile Include="StromatoliteModelMigrations\201807171218254_v4.cs" />
     <Compile Include="StromatoliteModelMigrations\201807171218254_v4.Designer.cs">
       <DependentUpon>201807171218254_v4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StromatoliteModelMigrations\201807201249403_v5.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807201249403_v5.Designer.cs">
+      <DependentUpon>201807201249403_v5.cs</DependentUpon>
     </Compile>
     <Compile Include="StromatoliteModelMigrations\Configuration.cs" />
     <Compile Include="ViewModels\OfferViewModel.cs" />
@@ -303,6 +313,12 @@
     <Content Include="Areas\Admin\Views\GalCategories\Details.cshtml" />
     <Content Include="Areas\Admin\Views\GalCategories\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\GalCategories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Pictures\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Pictures\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Pictures\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Pictures\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Pictures\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Pictures\_Index.cshtml" />
     <None Include="Properties\PublishProfiles\reg.ru.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -407,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StromatoliteModelMigrations\201807171218254_v4.resx">
       <DependentUpon>201807171218254_v4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807201249403_v5.resx">
+      <DependentUpon>201807201249403_v5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

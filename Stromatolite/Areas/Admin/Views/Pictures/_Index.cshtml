@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Stromatolite.Models.Picture>
+
+<table class="table table-bordered table-hover table-responsive table-striped">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.PicUrl)
+        </th>
+        <th>
+            Заголовок
+        </th>
+        <th>
+            Галерея
+        </th>
+        <th>
+            Порядок
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (!string.IsNullOrEmpty(item.PicUrl))
+                {
+                    <img class="img-responsive img-thumbnail" style="width:100px;height:auto;" src="@Url.Content(@item.PicUrl)" alt="" />
+                }
+                else
+                {
+                    <img class="img-responsive img-thumbnail" style="width:100px;height:auto;" src="@Url.Content("~/img/catalog/product-gallery/photo1.jpg")" alt="" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PicUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gallery.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ord)
+            </td>
+            <td>
+                @Ajax.ActionLink(" ", "Edit", "Pictures", new { area = "Admin", id = item.PictureID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-picture", OnSuccess = "$('#pictureModal').modal('show')", OnFailure = "$('#pictureModal').modal('show')" }, new { @class = "btn btn-sm btn-primary glyphicon glyphicon-edit", @title = "Редактировать" })
+                @Ajax.ActionLink(" ", "Delete", "Pictures", new { area = "Admin", id = item.PictureID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-picture-delete", OnSuccess = "$('#pictureModalDelete').modal('show')", OnFailure = "$('#pictureModalDelete').modal('show')" }, new { @class = "btn btn-sm btn-primary glyphicon glyphicon-trash", @title = "Удалить" })
+            </td>
+        </tr>
+    }
+
+</table>

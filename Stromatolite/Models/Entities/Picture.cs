@@ -11,7 +11,6 @@ namespace Stromatolite.Models
 
         [DisplayName("Заголовок")]
         [StringLength(200)]
-        [Required]
         public string Title { get; set; }
 
         [DisplayName("URL картинки")]

@@ -1,0 +1,50 @@
+﻿@model Stromatolite.Models.Picture
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Picture</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gallery.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gallery.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PicUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PicUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ord)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ord)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PictureID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

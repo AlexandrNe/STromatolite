@@ -6,94 +6,147 @@
 
 <h2>@ViewBag.Title</h2>
 
+<section class="tabs-widget">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#main" data-toggle="tab">Описание товара</a></li>
+                <li><a href="#gallery" data-toggle="tab">Редактирование изображений</a></li>
+                @*<li><a href="#characteristics" data-toggle="tab">Редактирование характеристик</a></li>
+                <li><a href="#similar" data-toggle="tab">Похожие товары</a></li>
+                <li><a href="#tags" data-toggle="tab">Теги</a></li>
+                <li><a href="#badges" data-toggle="tab">Бэйджи</a></li>
+                <li><a href="#prices" data-toggle="tab">Список цен</a></li>*@
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="main">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
 
-    <div class="form-horizontal">
-
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ProductID)
-        @Html.HiddenFor(model => model.GalleryID)
-        @Html.HiddenFor(model => model.GroupID)
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TitleFull, htmlAttributes: new { @class = "control-label " })
-
-            @Html.EditorFor(model => model.TitleFull, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TitleFull, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Article, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.Article, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Article, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
-
-            @Html.TextAreaFor(model => model.Description, 5, 10, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SEOurl, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.SEOurl, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SEOurl, "", new { @class = "text-danger" })
-        </div>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.ProductID)
+                            @Html.HiddenFor(model => model.GalleryID)
+                            @Html.HiddenFor(model => model.GroupID)
 
 
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
-        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TitleFull, htmlAttributes: new { @class = "control-label " })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.MetaDescription, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.MetaDescription, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MetaDescription, "", new { @class = "text-danger" })
-        </div>
+                                @Html.EditorFor(model => model.TitleFull, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TitleFull, "", new { @class = "text-danger" })
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.KeyWords, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.KeyWords, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.KeyWords, "", new { @class = "text-danger" })
-        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Article, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Article, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Article, "", new { @class = "text-danger" })
+                            </div>
 
-        <div class="form-group col-md-6">
-            @Html.LabelFor(model => model.Ord, htmlAttributes: new { @class = "control-label" })
-            @Html.EditorFor(model => model.Ord, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Ord, "", new { @class = "text-danger" })
-        </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
 
-        <div class="form-group col-md-6">
-            @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label" })
-            <div class="checkbox">
-                @Html.EditorFor(model => model.Active)
-                @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                                @Html.TextAreaFor(model => model.Description, 5, 10, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SEOurl, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.SEOurl, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SEOurl, "", new { @class = "text-danger" })
+                            </div>
+
+
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.MetaDescription, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.MetaDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MetaDescription, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.KeyWords, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.KeyWords, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.KeyWords, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.Ord, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Ord, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Ord, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "control-label" })
+                                <div class="checkbox">
+                                    @Html.EditorFor(model => model.Active)
+                                    @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+                @***********************************************************@
+                <div class="tab-pane fade" id="gallery">
+                    <div class="container">
+                        <h4>@Model.Title</h4>
+                        <div class="row">
+
+                            <div id="tab-pictures">
+                                @{Html.RenderAction("_Index", "Pictures", new { area = "Admin", id = Model.GalleryID });}
+                            </div>
+                            <div id="new-image">
+
+                                <div class="pic-select">
+                                    <h4>Новое изображение</h4>
+                                    @using (Ajax.BeginForm("Create", "Pictures", new { Area = "Admin" }, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "tab-pictures" }, new { @id = "picform", @enctype = "multipart/form-data" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("GalleryID", @Model.GalleryID)
+
+                                        
+                                         <label class="col-md-2"><input type="radio" name="pic" id="pic1" value="0" checked> Загрузить файлы: </label>
+                                         <div class="col-md-10">
+                                             <input type="file" multiple accept="image/*" name="uploadImage" id="uploadImage" value=" " />
+                                         </div>
+                                        
+                                    }
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
-        </div>
+    </section>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Сохранить" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-}
+
 
 <div>
     @Html.ActionLink("К списку продукции", "Index", new { area = "Admin" }, new { @class = "btn btn-default" })
@@ -101,4 +154,51 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#uploadImage').on('change', function (e) {
+
+            var $target = $("#picform");
+            var token = $target.find('[name=__RequestVerificationToken]').val();
+
+            var files = e.target.files;
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append(files[x].name, files[x]);
+                    }
+                    data.append("galleryID", "@Model.GalleryID");
+                    data.append("__RequestVerificationToken", token);
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/admin/pictures/UploadFile',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {
+                            $("#tab-pictures").html(result);
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            var err = "Ошибка " + " " + status + " " + p3 + " " + p4;
+                            if (xhr.responseText && xhr.responseText[0] == "{")
+                                err = JSON.parse(xhr.responseText).Message;
+                            console.log(err);
+                        }
+                    });
+                } else {
+                    alert("Ваш браузер не поддерживает HTML5 загрузку файлов!");
+                }
+            }
+        });
+
+    });
+
+
+</script>
+
 }

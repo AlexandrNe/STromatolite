@@ -7,8 +7,8 @@
 
     <!-- Section Heading Start -->
     <div class="section_heading">
-        <p>Чем мы занимаемся...</p>
-        <h3>Каталог продукции</h3>
+        <p>Наша продукция</p>
+        <h3>Каталог</h3>
     </div>
 
     <div class="gallery_menu">
@@ -16,15 +16,10 @@
             <button class="active btn" type="button" data-filter="*">Все</button>
             @foreach (var group in Model.Groups)
             {
-                <button class="btn" type="button" data-filter=".@group.GroupID">@group.Title</button>
+                <button class="btn_" type="button" data-filter=".@group.GroupID">@group.Title</button>
             }
 
-            
-            @*<button class="btn" type="button" data-filter=".art">Златолит</button>
-            <button class="btn" type="button" data-filter=".bra">Черный сланец</button>
-            <button class="btn" type="button" data-filter=".app">Пиленый</button>
-            <button class="btn" type="button" data-filter=".app">Галтованный</button>
-            <button class="btn" type="button" data-filter=".app">Валуны</button>*@
+
         </div>
     </div>
 
@@ -38,18 +33,22 @@
                 {
                     <img src="@Url.Content(offer.Product.Gallery.Pictures.OrderBy(d => d.Ord).FirstOrDefault().PicUrl)" alt="@offer.Product.TitleFull">
                 }
-                <img src="~img/gallery/1.jpg" alt="">
+                @*<img src="~img/gallery/1.jpg" alt="">*@
                 <!-- Single gallery Item hover caption -->
                 <div class="hover_overlay">
                     <div class="classy-table">
                         <div class="classy-table-cell">
                             <div class="gallery_info">
-                                <h6>@offer.Product.Title</h6>
-                                <p>Подробнее</p>
+                                <h6>@offer.Product.Group.Title</h6>
+                                <h5>@offer.Product.Title</h5>
+                                <p>@offer.Price @offer.Currency.Abbr за @offer.Quantity @offer.Unit.Title</p>
+
+                                <div class="btns">
+                                    
+                                    <a href="portfolio-single-v1.html"><i class="pe-7s-link"></i></a>
+                                </div>
                             </div>
-                            <div class="more_details text-center">
-                                <a class="gallery_img" href="img/gallery/1.jpg"><i class="glyphicon glyphicon-search"></i></a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -57,138 +56,9 @@
 
         }
         
-        <!-- Single gallery Item Start -->
-        <div class="single_gallery_item art">
-            <img src="img/gallery/2.jpg" alt="">
-            <!-- Single gallery Item hover caption -->
-            <div class="hover_overlay">
-                <div class="classy-table">
-                    <div class="classy-table-cell">
-                        <div class="gallery_info">
-                            <h6>Наименование</h6>
-                            <p>Подробнее</p>
-                        </div>
-                        <div class="more_details text-center">
-                            <a class="gallery_img" href="img/gallery/2.jpg"><i class="pe-7s-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
 
-        <!-- Single gallery Item Start -->
-        <div class="single_gallery_item wow bra fadeInUp">
-            <img src="img/gallery/3.jpg" alt="">
-            <!-- Single gallery Item hover caption -->
-            <div class="hover_overlay">
-                <div class="classy-table">
-                    <div class="classy-table-cell">
-                        <div class="gallery_info">
-                            <h6>Наименование</h6>
-                            <p>Подробнее</p>
-                        </div>
-                        <div class="more_details text-center">
-                            <a class="gallery_img" href="img/gallery/3.jpg"><i class="pe-7s-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Single gallery Item Start -->
-        <div class="single_gallery_item wow art fadeInUp">
-            <img src="img/gallery/4.jpg" alt="">
-            <!-- Single gallery Item hover caption -->
-            <div class="hover_overlay">
-                <div class="classy-table">
-                    <div class="classy-table-cell">
-                        <div class="gallery_info">
-                            <h6>Наименование</h6>
-                            <p>Подробнее</p>
-                        </div>
-                        <div class="more_details text-center">
-                            <a class="gallery_img" href="img/gallery/4.jpg"><i class="pe-7s-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Single gallery Item Start -->
-        <div class="single_gallery_item bra">
-            <img src="img/gallery/5.jpg" alt="">
-            <!-- Single gallery Item hover caption -->
-            <div class="hover_overlay">
-                <div class="classy-table">
-                    <div class="classy-table-cell">
-                        <div class="gallery_info">
-                            <h6>Наименование</h6>
-                            <p>Подробнее</p>
-                        </div>
-                        <div class="more_details text-center">
-                            <a class="gallery_img" href="img/gallery/5.jpg"><i class="pe-7s-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Single gallery Item Start -->
-        <div class="single_gallery_item art">
-            <img src="img/gallery/6.jpg" alt="">
-            <!-- Single gallery Item hover caption -->
-            <div class="hover_overlay">
-                <div class="classy-table">
-                    <div class="classy-table-cell">
-                        <div class="gallery_info">
-                            <h6>Наименование</h6>
-                            <p>Подробнее</p>
-                        </div>
-                        <div class="more_details text-center">
-                            <a class="gallery_img" href="img/gallery/6.jpg"><i class="pe-7s-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Single gallery Item Start -->
-        <div class="single_gallery_item web">
-            <img src="img/gallery/7.jpg" alt="">
-            <!-- Single gallery Item hover caption -->
-            <div class="hover_overlay">
-                <div class="classy-table">
-                    <div class="classy-table-cell">
-                        <div class="gallery_info">
-                            <h6>Наименование</h6>
-                            <p>Подробнее</p>
-                        </div>
-                        <div class="more_details text-center">
-                            <a class="gallery_img" href="img/gallery/7.jpg"><i class="pe-7s-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Single gallery Item Start -->
-        <div class="single_gallery_item bra">
-            <img src="img/gallery/8.jpg" alt="">
-            <!-- Single gallery Item hover caption -->
-            <div class="hover_overlay">
-                <div class="classy-table">
-                    <div class="classy-table-cell">
-                        <div class="gallery_info">
-                            <h6>Наименование</h6>
-                            <p>Подробнее</p>
-                        </div>
-                        <div class="more_details text-center">
-                            <a class="gallery_img" href="img/gallery/8.jpg"><i class="pe-7s-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
     </div>
 </section>
 <!-- ***** Project area end ***** -->
@@ -196,30 +66,3 @@
 
 
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
