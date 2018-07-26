@@ -244,6 +244,19 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\masterslider\blank.gif" />
+    <Content Include="Content\masterslider\grab.cur" />
+    <Content Include="Content\masterslider\grab.png" />
+    <Content Include="Content\masterslider\grabbing.cur" />
+    <Content Include="Content\masterslider\grabbing.png" />
+    <Content Include="Content\masterslider\loading-1-dark.gif" />
+    <Content Include="Content\masterslider\loading-1-light.gif" />
+    <Content Include="Content\masterslider\loading-1.gif" />
+    <Content Include="Content\masterslider\loading-2-dark.gif" />
+    <Content Include="Content\masterslider\loading-2-light.gif" />
+    <Content Include="Content\masterslider\loading-2.gif" />
+    <Content Include="Content\masterslider\masterslider.css" />
+    <Content Include="Content\masterslider\video-close-btn.png" />
     <Content Include="Content\revolution-slider\assets\arrow_large_left.png" />
     <Content Include="Content\revolution-slider\assets\arrow_large_right.png" />
     <Content Include="Content\revolution-slider\assets\bg1.jpg" />
@@ -263,7 +276,10 @@
     <Content Include="Content\revolution-slider\font\revicons.svg" />
     <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\brand-icons.svg" />
+    <Content Include="fonts\flaticon.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Areas\UserAccount\Views\web.config" />
@@ -319,6 +335,17 @@
     <Content Include="Areas\Admin\Views\Pictures\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Pictures\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Pictures\_Index.cshtml" />
+    <Content Include="Areas\UserAccount\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\UserAccount\Views\Shared\_Layout.cshtml" />
+    <Content Include="fonts\brand-icons.eot" />
+    <Content Include="fonts\brand-icons.ttf" />
+    <Content Include="fonts\brand-icons.woff" />
+    <Content Include="fonts\flaticon.eot" />
+    <Content Include="fonts\flaticon.ttf" />
+    <Content Include="fonts\flaticon.woff" />
+    <Content Include="fonts\Pe-icon-7-stroke.eot" />
+    <Content Include="fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="fonts\Pe-icon-7-stroke.woff" />
     <None Include="Properties\PublishProfiles\reg.ru.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -341,7 +368,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\plugins\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\plugins\isotope.pkgd.min.js" />
+    <Content Include="Scripts\plugins\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\plugins\jquery.stellar.min.js" />
+    <Content Include="Scripts\plugins\masterslider.min.js" />
     <Content Include="Scripts\plugins\owl.carousel.js" />
     <Content Include="Scripts\plugins\waves.min.js" />
     <Content Include="Scripts\plugins\waypoints.min.js" />
@@ -397,11 +426,12 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Offers\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\UserAccount\Views\Shared\" />
+    <Folder Include="Content\masterslider\style\" />
     <Folder Include="img\logo\" />
   </ItemGroup>
   <ItemGroup>

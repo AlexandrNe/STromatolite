@@ -387,6 +387,48 @@
     }
 
     /**************************************************/
-    .glyphicon-trash:before {
-  content: "\e020";
+  
+.gallery_info .btns {
+  position: relative;
+  top: 0;
+  margin: 0 0 22px 0;
 }
+
+.gallery_info .btns {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 50%;
+  left: 0;
+  margin-top: -24px;
+}
+.gallery_info .btns a {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  line-height: 44px;
+  font-size: 24px;
+  border-radius: 3px;
+  border: 1px solid #000;
+  color: #000 !important;
+  background-color: transparent;
+  margin: 0 4px;
+  opacity: .8;
+  -webkit-transform: translate(-20px, 0);
+  -ms-transform: translate(-20px, 0);
+  -o-transform: translate(-20px, 0);
+  transform: translate(-20px, 0);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.gallery_info .btns a:last-child {
+  -webkit-transform: translate(20px, 0);
+  -ms-transform: translate(20px, 0);
+  -o-transform: translate(20px, 0);
+  transform: translate(20px, 0);
+}
+.gallery_info .btns a:hover,
+.gallery_info .btns a:focus {
+  opacity: 1;
+}
+

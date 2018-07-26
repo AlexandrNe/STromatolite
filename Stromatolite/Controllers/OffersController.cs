@@ -1,8 +1,10 @@
 ﻿using Stromatolite.DAL;
+using Stromatolite.Models;
 using Stromatolite.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -27,9 +29,21 @@ namespace Stromatolite.Controllers
         }
 
         // GET: Offers/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string url)
         {
-            return View();
+            if (url == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            url = DAL.ClearSpecChars(url);
+            Offer offer = DAL.uof.OfferRepository.GetByField(f => f.Product.SEOurl == url);
+            
+            if (offer == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(offer);
         }
 
         // GET: Offers/Create

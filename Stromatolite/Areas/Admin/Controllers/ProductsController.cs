@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using Stromatolite.Models;
 using Stromatolite.DAL;
 
 namespace Stromatolite.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "admin")]
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private DataAccessLayer DAL = new DataAccessLayer();
@@ -58,7 +61,7 @@ namespace Stromatolite.Areas.Admin.Controllers
                     Guid galleryID = Guid.NewGuid();
                     DAL.uof.GalleryRepository.Insert(new Gallery { GalCategoryID = DAL.uof.GalCategoryRepository.GetByField(f => f.ProdGal).GalCategoryID,
                                                                     GalleryID = galleryID,
-                                                                    Title = product.Title});
+                                                                    Title = product.TitleFull});
                     product.GalleryID = galleryID;
                     DAL.uof.ProductRepository.Insert(product);
                     DAL.uof.OfferRepository.Insert(new Offer { OfferID = Guid.NewGuid(),

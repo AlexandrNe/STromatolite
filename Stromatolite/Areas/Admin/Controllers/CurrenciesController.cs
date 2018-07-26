@@ -12,6 +12,7 @@ using Stromatolite.DAL;
 
 namespace Stromatolite.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CurrenciesController : Controller
     {
         private DataAccessLayer DAL = new DataAccessLayer();

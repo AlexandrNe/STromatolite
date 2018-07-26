@@ -14,6 +14,7 @@ using Stromatolite.Helpers;
 
 namespace Stromatolite.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PicturesController : Controller
     {
         private StromatoliteModel db = new StromatoliteModel();

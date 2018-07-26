@@ -11,6 +11,7 @@ using Stromatolite.Models;
 
 namespace Stromatolite.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class OffersController : Controller
     {
         private StromatoliteModel db = new StromatoliteModel();
@@ -41,7 +42,7 @@ namespace Stromatolite.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.CurrencyID = new SelectList(db.Currencies, "CurrencyID", "Title");
-            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "Title");
+            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "TitleFull");
             ViewBag.UnitID = new SelectList(db.Units, "UnitID", "Title");
             return View();
         }
@@ -62,7 +63,7 @@ namespace Stromatolite.Areas.Admin.Controllers
             }
 
             ViewBag.CurrencyID = new SelectList(db.Currencies, "CurrencyID", "Title", offer.CurrencyID);
-            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "Title", offer.ProductID);
+            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "TitleFull", offer.ProductID);
             ViewBag.UnitID = new SelectList(db.Units, "UnitID", "Title", offer.UnitID);
             return View(offer);
         }
@@ -80,7 +81,7 @@ namespace Stromatolite.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.CurrencyID = new SelectList(db.Currencies, "CurrencyID", "Title", offer.CurrencyID);
-            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "Title", offer.ProductID);
+            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "TitleFull", offer.ProductID);
             ViewBag.UnitID = new SelectList(db.Units, "UnitID", "Title", offer.UnitID);
             return View(offer);
         }
@@ -99,7 +100,7 @@ namespace Stromatolite.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CurrencyID = new SelectList(db.Currencies, "CurrencyID", "Title", offer.CurrencyID);
-            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "Title", offer.ProductID);
+            ViewBag.ProductID = new SelectList(db.Products, "ProductID", "TitleFull", offer.ProductID);
             ViewBag.UnitID = new SelectList(db.Units, "UnitID", "Title", offer.UnitID);
             return View(offer);
         }

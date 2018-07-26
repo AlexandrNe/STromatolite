@@ -1,4 +1,4 @@
-/*
+ /*
  * Triumph Multipurpose HTML5 Template v1.0
  * Copyright 2015 8Guild.com
  * Custom scripts for Triumph Template
@@ -461,30 +461,46 @@ jQuery(document).ready(function($) {
 
 		/** Magnific Popup Init
 		**********************************************************/
-		// Image Popup
-		if($('.popup-img').length > 0) {
-			$('.popup-img').magnificPopup({ 
-				type:'image',
-				gallery:{
-			    enabled:true
-			  },
-				removalDelay: 300,
-			  mainClass: 'mfp-fade'
+		// product Popup
+		if($('.popup-ajax').length > 0) {
+			$('.popup-ajax').magnificPopup({ 
+			    type: 'ajax',
+			    elementParse: function (item) {
+			        this.st.ajax.settings = item.el.data();
 
+			    },
+			    callbacks: {
+			        ajaxContentAdded: function () {
+
+			            if ($('.product-showcase-slider').length > 0) {
+			                var prodShowSlider = new MasterSlider();
+
+			                prodShowSlider.control('arrows');
+			                prodShowSlider.control('thumblist', { autohide: false, dir: 'v', arrows: false, align: 'right', width: 127, height: 137, margin: 5, space: 5, hideUnder: 520 });
+
+			                prodShowSlider.setup('ms-product-showcase', {
+			                    width: 613,
+			                    height: 565,
+			                    space: 5,
+			                    view: 'parallaxMask'
+			                });
+			            }
+			        }
+			    }
 			});
 		}
 
 		// Video Popup (iFrames)
-		if($('.popup-video').length > 0) {
-			$('.popup-video').magnificPopup({
-				type:'iframe',
-				removalDelay: 300,
+		//if($('.popup-video').length > 0) {
+		//	$('.popup-video').magnificPopup({
+		//		type:'iframe',
+		//		removalDelay: 300,
 
-			  // Class that is added to popup wrapper and background
-			  // apply CSS animations just to this exact popup
-			  mainClass: 'mfp-fade'
-			});
-		}
+		//	  // Class that is added to popup wrapper and background
+		//	  // apply CSS animations just to this exact popup
+		//	  mainClass: 'mfp-fade'
+		//	});
+		//}
 
 		
 		/*Content Animations On Scroll
@@ -937,6 +953,72 @@ jQuery(document).ready(function($) {
 		});
 	}
 
+    /********************************************/
+	var myMap;
+
+    // Дождёмся загрузки API и готовности DOM.
+	ymaps.ready(init);
+
+	function map_initialize(mapBlock) {
+	    mapBlock.each(function () {
+	        var currMap = $(this);
+	        var coordinates = $(this).data('coordinates').split(',');
+	        var title = $(this).data('title');
+	        var title2 = $(this).data('title2');
+	        var img = $(this).data('img');
+
+	        var myMap,
+                myPlacemark;
+
+	        ymaps.ready(init_map);
+
+	        function init_map() {
+	            myMap = new ymaps.Map(currMap[0], {
+	                center: [coordinates[0], coordinates[1]],
+	                zoom: 16,
+	                controls: ['smallMapDefaultSet']
+	            });
+	            myMap.behaviors.disable('scrollZoom');
+	            //myGeoObject = new ymaps.GeoObject({
+	            //    geometry: {
+	            //        type: "Point",
+	            //        coordinates: [coordinates[0], coordinates[1]]
+	            //    },
+	            //    properties: {
+	            //        iconContent: title,
+	            //        hintContent: '',
+	            //        balloonContent: '<img width="100px" class="img-thumbnail" src="' + img + '" /><p style="width:150px;">' + title2 + '</p>'
+	            //    }
+	            //}, {
+	            //    preset: 'islands#blueStretchyIcon'
+	            //});
+
+	            //myMap.geoObjects.add(myGeoObject)
+
+	        }
+	    })
+	}
+
+	function init() {
+
+	    var maps = $(".map");
+	    map_initialize(maps);
+
+	    //myMap = new ymaps.Map('map', {
+
+	    //    center: [54.75, 58.20], 
+	    //    zoom: 10
+	    //});
+
+	    //myMap.behaviors.disable('scrollZoom');
+	    //myPlacemark = new ymaps.Placemark([54.75, 58.20], {
+	    //    hintContent: 'ЛЕМЕЗИТ"',
+	    //    balloonContent: 'г. Катав-Ивановск, ул. Цементников, 7'
+	    //});
+
+	    //myMap.geoObjects.add(myPlacemark);
+
+	}
 
 	/* Google Maps
 	**************************************************************/

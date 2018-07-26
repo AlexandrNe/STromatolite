@@ -135,6 +135,7 @@ namespace Stromatolite.Areas.UserAccount.Controllers
             }
         }
 
+        
         //
         // GET: /Account/Register
         [AllowAnonymous]

@@ -9,7 +9,7 @@
     <meta name="keywords" content="купить лемезит, плитняк лемезит, натуральный камень, облицовочный камень" />
     <meta name="author" content="AlexandrNe" />
 
-    <title>Облицовочный камень лемезит</title>
+    <title>ЛЕМЕЗИТ</title>
 
     <!--Favicon-->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -56,41 +56,73 @@
 
     </section><!-- Hero End -->
     @****************************************************************************************************************@
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
-               
+
+   @* <div class="body-content">*@
+        @RenderBody()
+
+    <!-- Hero -->
+    <section class="section-fw section-css-parallax text-light space-bottom-3x" style="margin-top:80px; background-image:url(img/homepage/corporate/fullwidth-slider/par4.jpg);">
+        <div class="container text-light">
+            <div class="row" style="margin-top:140px;margin-bottom:140px;">
+                @*<div class="col-md-2"></div>
+                <div class="col-md-9" style="background-color: rgba(51, 51, 51, 0.56);border-radius: 15px;">
+                    <blockquote style="font-size:50px;">
+                        Все виды лемезита со скидкой 30%
+                    </blockquote>
+                </div>*@
+
             </div>
         </div>
-    </div>*@
-    <div class="body-content">
-        @RenderBody()
+
+    </section><!-- Hero End -->
+    @****************************************************************************************************************@
+    <section>
+        <!-- Collapsable version -->
+        <div class="map-collapse">
+            <div class="map-collapse-toggle" data-collapse-title="Свернуть карту" data-expand-title="Развернуть карту">
+                <i class="pe-7s-map"></i>
+                <span>Свернуть карту</span>
+            </div>
+            <!-- Data API:
+                 data-height="500" height of the map in pixels
+                 data-address="Your address" string
+                 data-zoom="number" to control map zoom when loaded
+                 data-disable-controls="false/true" enable/disable map controls like pan, zoom, etc.
+                 data-scrollwheel="true/false" enable/disable mouse scroll wheel zoom
+                 data-marker="path_to_your_image" path to custom marker image
+                 data-marker-title=" Your title" appears on marker hover
+                 data-styles="[array]" you can adjust the look and feel of your map. Recommend to use https://snazzymaps.com
+             -->
+           @* <div id="map" style="width:100%;height:500px;position:relative"></div>*@
+
+            <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="54.752074,58.198443" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
+            @*<div class="google-map"
+                 data-height="500"
+                 data-address="Lviv, UA"
+                 data-zoom="6"
+                 data-disable-controls="false"
+                 data-scrollwheel="true"
+                 data-marker="../img/map-marker.png"
+                 data-marker-title="8 Guild Office"></div>*@
+        </div>
+    </section>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year – плитняк-лемезит.рф</p>
         </footer>
-    </div>
+   @* </div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
     @Scripts.Render("~/bundles/revolution")
 
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
     @Scripts.Render("~/bundles/scripts")
 
     @RenderSection("scripts", required: false)
+
+    
 </body>
 </html>

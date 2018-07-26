@@ -31,13 +31,16 @@ namespace Stromatolite
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                         "~/Scripts/plugins/waypoints.min.js",
                         "~/Scripts/plugins/waves.min.js",
+                        "~/Scripts/plugins/masterslider.min.js",
                         "~/Scripts/plugins/jquery.stellar.min.js",
+                        "~/Scripts/plugins/jquery.magnific-popup.min.js",
                         "~/Scripts/plugins/owl.carousel.js",
                         "~/Scripts/plugins/isotope.pkgd.min.js",
                         "~/Scripts/plugins/imagesloaded.pkgd.min.js",
                         "~/Scripts/scripts.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/masterslider/masterslider.css",
                       "~/Content/magnific-popup.css",
                       "~/Content/styles.css",
                       "~/Content/Site.css"));
