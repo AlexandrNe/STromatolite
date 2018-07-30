@@ -16,6 +16,7 @@ namespace Stromatolite.DAL
         private GenericRepository<Gallery> galleryRepository;
         private GenericRepository<Group> groupRepository;
         private GenericRepository<Offer> offerRepository;
+        private GenericRepository<Order> orderRepository;
         private GenericRepository<Picture> pictureRepository;
         private GenericRepository<Product> productRepository;
         private GenericRepository<Unit> unitRepository;
@@ -80,6 +81,18 @@ namespace Stromatolite.DAL
                     this.offerRepository = new GenericRepository<Offer>(context);
                 }
                 return offerRepository;
+            }
+        }
+
+        public GenericRepository<Order> OrderRepository
+        {
+            get
+            {
+                if (this.orderRepository == null)
+                {
+                    this.orderRepository = new GenericRepository<Order>(context);
+                }
+                return orderRepository;
             }
         }
 

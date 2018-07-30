@@ -183,6 +183,7 @@
     <Compile Include="Areas\Admin\Controllers\GalCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OffersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingsController.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\UserAccount\Controllers\ManageController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DAL\DataAccessLayer.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
@@ -212,6 +214,7 @@
     <Compile Include="Models\Entities\Gallery.cs" />
     <Compile Include="Models\Entities\GalCategory.cs" />
     <Compile Include="Models\Entities\Picture.cs" />
+    <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\StromatoliteModel.cs" />
@@ -235,6 +238,18 @@
     <Compile Include="StromatoliteModelMigrations\201807201249403_v5.Designer.cs">
       <DependentUpon>201807201249403_v5.cs</DependentUpon>
     </Compile>
+    <Compile Include="StromatoliteModelMigrations\201807270400486_v6.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807270400486_v6.Designer.cs">
+      <DependentUpon>201807270400486_v6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StromatoliteModelMigrations\201807270512160_v7.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807270512160_v7.Designer.cs">
+      <DependentUpon>201807270512160_v7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StromatoliteModelMigrations\201807270516055_v8.cs" />
+    <Compile Include="StromatoliteModelMigrations\201807270516055_v8.Designer.cs">
+      <DependentUpon>201807270516055_v8.cs</DependentUpon>
+    </Compile>
     <Compile Include="StromatoliteModelMigrations\Configuration.cs" />
     <Compile Include="ViewModels\OfferViewModel.cs" />
   </ItemGroup>
@@ -243,6 +258,34 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox-x.png" />
+    <Content Include="Content\fancybox\fancybox-y.png" />
+    <Content Include="Content\fancybox\fancybox.png" />
+    <Content Include="Content\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\fancybox\fancy_close.png" />
+    <Content Include="Content\fancybox\fancy_loading.png" />
+    <Content Include="Content\fancybox\fancy_nav_left.png" />
+    <Content Include="Content\fancybox\fancy_nav_right.png" />
+    <Content Include="Content\fancybox\fancy_shadow_e.png" />
+    <Content Include="Content\fancybox\fancy_shadow_n.png" />
+    <Content Include="Content\fancybox\fancy_shadow_ne.png" />
+    <Content Include="Content\fancybox\fancy_shadow_nw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_s.png" />
+    <Content Include="Content\fancybox\fancy_shadow_se.png" />
+    <Content Include="Content\fancybox\fancy_shadow_sw.png" />
+    <Content Include="Content\fancybox\fancy_shadow_w.png" />
+    <Content Include="Content\fancybox\fancy_title_left.png" />
+    <Content Include="Content\fancybox\fancy_title_main.png" />
+    <Content Include="Content\fancybox\fancy_title_over.png" />
+    <Content Include="Content\fancybox\fancy_title_right.png" />
+    <Content Include="Content\fancybox\grey%402x.png" />
+    <Content Include="Content\fancybox\grey.png" />
+    <Content Include="Content\fancybox\jquery.fancybox.css" />
     <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\masterslider\blank.gif" />
     <Content Include="Content\masterslider\grab.cur" />
@@ -275,6 +318,68 @@
     <Content Include="Content\revolution-slider\css\revolution-slider.css" />
     <Content Include="Content\revolution-slider\font\revicons.svg" />
     <Content Include="Content\styles.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.menu.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Content\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\brand-icons.svg" />
     <Content Include="fonts\flaticon.svg" />
@@ -346,6 +451,11 @@
     <Content Include="fonts\Pe-icon-7-stroke.eot" />
     <Content Include="fonts\Pe-icon-7-stroke.ttf" />
     <Content Include="fonts\Pe-icon-7-stroke.woff" />
+    <Content Include="Areas\Admin\Views\Orders\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <None Include="Properties\PublishProfiles\reg.ru.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -358,6 +468,12 @@
     <Content Include="Scripts\jquery-1.11.2.min.js" />
     <Content Include="Scripts\jquery-1.11.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-ui-i18n.js" />
+    <Content Include="Scripts\jquery-ui-i18n.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -368,17 +484,20 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\plugins\imagesloaded.pkgd.min.js" />
     <Content Include="Scripts\plugins\isotope.pkgd.min.js" />
+    <Content Include="Scripts\plugins\jquery.fancybox.js" />
     <Content Include="Scripts\plugins\jquery.magnific-popup.min.js" />
     <Content Include="Scripts\plugins\jquery.stellar.min.js" />
     <Content Include="Scripts\plugins\masterslider.min.js" />
     <Content Include="Scripts\plugins\owl.carousel.js" />
     <Content Include="Scripts\plugins\waves.min.js" />
     <Content Include="Scripts\plugins\waypoints.min.js" />
+    <Content Include="Scripts\plugins\wow.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\revolution-slider.min.js" />
     <Content Include="Scripts\rs-tools.min.js" />
     <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\scripts2.js" />
     <Content Include="Scripts\waves.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -427,6 +546,12 @@
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Offers\Details.cshtml" />
+    <Content Include="Views\Shared\_About.cshtml" />
+    <Content Include="Views\Orders\_Create.cshtml" />
+    <Content Include="Views\Orders\CreateCall.cshtml" />
+    <Content Include="Views\Orders\_Result.cshtml" />
+    <Content Include="Views\Orders\_Callback.cshtml" />
+    <Content Include="Views\Orders\_Result2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -456,6 +581,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StromatoliteModelMigrations\201807201249403_v5.resx">
       <DependentUpon>201807201249403_v5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807270400486_v6.resx">
+      <DependentUpon>201807270400486_v6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807270512160_v7.resx">
+      <DependentUpon>201807270512160_v7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201807270516055_v8.resx">
+      <DependentUpon>201807270516055_v8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

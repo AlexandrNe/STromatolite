@@ -32,6 +32,7 @@
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Currency> Currencies { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
     }

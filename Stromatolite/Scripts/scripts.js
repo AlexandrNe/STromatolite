@@ -297,7 +297,8 @@ jQuery(document).ready(function($) {
 
 	/** Count Input (Quantity)
 	**********************************************************/
-	$(".incr-btn").on("click", function(e) {
+    //$(".incr-btn").on("click", function(e) {
+	$(document).on("click", ".incr-btn", function(e) {
 		var $button = $(this);
 		var oldValue = $button.parent().find('.quantity').val();
 		$button.parent().find('.incr-btn[data-action="decrease"]').removeClass('inactive');
@@ -313,6 +314,7 @@ jQuery(document).ready(function($) {
 			}
 		}
 		$button.parent().find('.quantity').val(newVal);
+		$('#quantity').val(newVal);
 		e.preventDefault();
 	});
 
@@ -461,7 +463,7 @@ jQuery(document).ready(function($) {
 
 		/** Magnific Popup Init
 		**********************************************************/
-		// product Popup
+		 //product Popup
 		if($('.popup-ajax').length > 0) {
 			$('.popup-ajax').magnificPopup({ 
 			    type: 'ajax',
@@ -484,11 +486,61 @@ jQuery(document).ready(function($) {
 			                    space: 5,
 			                    view: 'parallaxMask'
 			                });
-			            }
+			            };
+
+			            $("a#order").fancybox({
+
+			                maxWidth: 700,
+			                maxHeight: 600,
+			                fitToView: false,
+			                width: 'auto',
+			                height: 'auto',
+			                autoSize: true,
+			                scrolling: 'no',
+			                closeClick: false,
+			                openEffect: 'elastic',
+			                closeEffect: 'elastic',
+			                modal: true
+			            });
 			        }
 			    }
 			});
 		}
+
+
+
+        /***/
+		$("a#order-call").fancybox({
+
+		    type: 'ajax',
+		    href: '/Orders/_Callback',
+
+		    fitToView: true,
+		    width: 'auto',
+		    height: 'auto',
+		    autoSize: true,
+		    scrolling: 'no',
+		    closeClick: false,
+		    openEffect: 'elastic',
+		    closeEffect: 'elastic',
+		    modal: true
+		});
+
+
+		
+
+	    /*********/
+
+		   //var wow = new WOW(
+           //         {
+           //             boxClass: 'wow', // animated element css class (default is wow)
+           //             animateClass: 'animated', // animation css class (default is animated)
+           //             offset: 100, // distance to the element when triggering the animation (default is 0)
+           //             mobile: false        // trigger animations on mobile devices (true is default)
+           //         }
+           // );
+		   // wow.init();
+
 
 		// Video Popup (iFrames)
 		//if($('.popup-video').length > 0) {
@@ -599,19 +651,19 @@ jQuery(document).ready(function($) {
 
 	/** Product Showcase Slider (Master Slider)
 	**********************************************************/
-	if($('.product-showcase-slider').length > 0) {
-		var prodShowSlider = new MasterSlider();
+	//if($('.product-showcase-slider').length > 0) {
+	//	var prodShowSlider = new MasterSlider();
 
-		prodShowSlider.control('arrows');	
-		prodShowSlider.control('thumblist' , {autohide:false, dir:'v', arrows:false, align:'right', width:127, height:137, margin:5, space:5, hideUnder:520});
+	//	prodShowSlider.control('arrows');	
+	//	prodShowSlider.control('thumblist' , {autohide:false, dir:'v', arrows:false, align:'right', width:127, height:137, margin:5, space:5, hideUnder:520});
 		
-		prodShowSlider.setup('ms-product-showcase' , {
-			width:613,
-			height:565,
-			space:5,
-			view:'parallaxMask'
-		});
-	}
+	//	prodShowSlider.setup('ms-product-showcase' , {
+	//		width:613,
+	//		height:565,
+	//		space:5,
+	//		view:'parallaxMask'
+	//	});
+	//}
 
 	
 	/** Laptop Slider (Master Slider)
@@ -953,73 +1005,7 @@ jQuery(document).ready(function($) {
 		});
 	}
 
-    /********************************************/
-	var myMap;
-
-    // Дождёмся загрузки API и готовности DOM.
-	ymaps.ready(init);
-
-	function map_initialize(mapBlock) {
-	    mapBlock.each(function () {
-	        var currMap = $(this);
-	        var coordinates = $(this).data('coordinates').split(',');
-	        var title = $(this).data('title');
-	        var title2 = $(this).data('title2');
-	        var img = $(this).data('img');
-
-	        var myMap,
-                myPlacemark;
-
-	        ymaps.ready(init_map);
-
-	        function init_map() {
-	            myMap = new ymaps.Map(currMap[0], {
-	                center: [coordinates[0], coordinates[1]],
-	                zoom: 16,
-	                controls: ['smallMapDefaultSet']
-	            });
-	            myMap.behaviors.disable('scrollZoom');
-	            //myGeoObject = new ymaps.GeoObject({
-	            //    geometry: {
-	            //        type: "Point",
-	            //        coordinates: [coordinates[0], coordinates[1]]
-	            //    },
-	            //    properties: {
-	            //        iconContent: title,
-	            //        hintContent: '',
-	            //        balloonContent: '<img width="100px" class="img-thumbnail" src="' + img + '" /><p style="width:150px;">' + title2 + '</p>'
-	            //    }
-	            //}, {
-	            //    preset: 'islands#blueStretchyIcon'
-	            //});
-
-	            //myMap.geoObjects.add(myGeoObject)
-
-	        }
-	    })
-	}
-
-	function init() {
-
-	    var maps = $(".map");
-	    map_initialize(maps);
-
-	    //myMap = new ymaps.Map('map', {
-
-	    //    center: [54.75, 58.20], 
-	    //    zoom: 10
-	    //});
-
-	    //myMap.behaviors.disable('scrollZoom');
-	    //myPlacemark = new ymaps.Placemark([54.75, 58.20], {
-	    //    hintContent: 'ЛЕМЕЗИТ"',
-	    //    balloonContent: 'г. Катав-Ивановск, ул. Цементников, 7'
-	    //});
-
-	    //myMap.geoObjects.add(myPlacemark);
-
-	}
-
+    
 	/* Google Maps
 	**************************************************************/
 	if($('.google-map').length > 0) {

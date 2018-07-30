@@ -9,26 +9,27 @@
     <div class="row">
 
         <!-- Product Showcase Slider -->
-        <div class="col-lg-8 col-md-7 space-bottom">
+        <div class="col-lg-8 col-md-7 space-bottom" style="margin-top:20px;">
             <div class="product-showcase-slider">
+
                 <!-- masterslider -->
                 <div class="master-slider ms-skin-default" id="ms-product-showcase">
                     @foreach (var picture in Model.Product.Gallery.Pictures.OrderBy(d => d.Ord))
                     {
                         <div class="ms-slide">
-                            <img style="margin-top:15px;" src="~/Content/masterslider/style/blank.gif" data-src="@Url.Content(picture.PicUrl)" alt="@Model.Product.Title" />
+                            <img src="~/Content/masterslider/style/blank.gif" data-src="@Url.Content(picture.PicUrl)" alt="@Model.Product.Title" />
                             <img class="ms-thumb" src="@Url.Content(picture.PicUrl)" alt="@Model.Product.Title" />
                         </div>
                     }
 
-                    
+
                 </div>
                 <!-- end of masterslider -->
             </div>
         </div>
 
         <!-- Product Details -->
-        <div class="col-lg-4 col-md-5">
+        <div class="col-lg-4 col-md-5" style="margin-top:20px;">
             <div class="space-top-2x visible-sm visible-xs"></div>
 
             <h3>@Model.Product.TitleFull</h3>
@@ -39,25 +40,41 @@
                 {
                     <span class="shop-old-price">@Model.OldPrice</span>
                 }
-                <span class="shop-price">@Model.Price</span><i class="glyphicon-rub"> </i>
+                <span class="shop-price">@Model.Price.ToString("C0")</span>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="count-input space-bottom">
                         <a class="incr-btn" data-action="decrease" href="#">&ndash;</a>
-                        <input class="quantity" type="text" value="1">
+                        <input name="quantity" class="quantity" type="text" value="1">
                         <a class="incr-btn" data-action="increase" href="#">+</a>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <span style="font-size:25px;"> @Model.Unit.Title</span>
                 </div>
             </div>
-            
 
-            <a href="#" class="btn btn-plus btn-primary waves-effect waves-light">
-                В корзину
+            <a id="order" href="#orderForm" class="btn btn-ghost btn-primary waves-effect waves-light icon-left">
+                <i class="pe-7s-cart"></i>
+                Заказать
             </a>
+
+            <div style="display:none;">
+                <div id="orderForm">
+
+                       @{
+                           Html.RenderAction("_Create", "Orders", new { area = string.Empty, offerID = Model.OfferID });
+                       }
+
+                </div>
+            </div>
+
+            <a id="order-call" href="#order-callForm" class="btn btn-primary waves-effect waves-light icon-left">
+                <i class="pe-7s-call"></i>
+                Обратный звонок
+            </a>
+
         </div>
-    </div>
+            </div>
 </section>

@@ -20,18 +20,20 @@
    
 
     <!--Modernizr / Detectizr-->
+    @Styles.Render("~/Content/masterslider/css")
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/fancybox/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body class="parallax">
     <!-- Preloader -->
-    @*<div class="preloader">
+    <div class="preloader">
         <div class="spinner">
             <div class="cube1"></div>
             <div class="cube2"></div>
         </div>
-    </div>*@
+    </div>
     <div class="fake-scrollbar"></div>
 
     @Html.Partial("_Topbar")
@@ -41,13 +43,13 @@
     @Html.Partial("_Slider")
     @**************************************************************************************************@
     <!-- Hero -->
-    <section class="section-fw section-css-parallax text-light space-bottom-3x" style="background-image:url(img/homepage/corporate/fullwidth-slider/window-3456392.jpg);">
+    <section class="section-fw section-css-parallax text-light" style="background-image:url(img/homepage/corporate/fullwidth-slider/window-3456392.jpg);">
         <div class="container text-light">
             <div class="row" style="margin-top:100px;margin-bottom:100px;">
                 <div class="col-md-2"></div>
                 <div class="col-md-9" style="background-color: rgba(51, 51, 51, 0.56);border-radius: 15px;">
-                    <blockquote style="font-size:50px;">
-                        Все виды лемезита со скидкой 30%
+                    <blockquote style="font-size:50px;" class="text-center">
+                        Все виды лемезита от производителя – от 130 руб./м<sup>2</sup>
                     </blockquote>
                 </div>
 
@@ -60,21 +62,9 @@
    @* <div class="body-content">*@
         @RenderBody()
 
-    <!-- Hero -->
-    <section class="section-fw section-css-parallax text-light space-bottom-3x" style="margin-top:80px; background-image:url(img/homepage/corporate/fullwidth-slider/par4.jpg);">
-        <div class="container text-light">
-            <div class="row" style="margin-top:140px;margin-bottom:140px;">
-                @*<div class="col-md-2"></div>
-                <div class="col-md-9" style="background-color: rgba(51, 51, 51, 0.56);border-radius: 15px;">
-                    <blockquote style="font-size:50px;">
-                        Все виды лемезита со скидкой 30%
-                    </blockquote>
-                </div>*@
+    @Html.Partial("_About")
 
-            </div>
-        </div>
-
-    </section><!-- Hero End -->
+    
     @****************************************************************************************************************@
     <section>
         <!-- Collapsable version -->
@@ -114,6 +104,10 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryajax")
+
+    @Scripts.Render("~/bundles/jqueryui")
+
 
     @Scripts.Render("~/bundles/revolution")
 

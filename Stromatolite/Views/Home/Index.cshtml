@@ -6,9 +6,14 @@
 <section class="gallery_area section_padding_100_0 clearfix" id="work">
 
     <!-- Section Heading Start -->
-    <div class="section_heading">
+    @*<div class="section_heading">
         <p>Наша продукция</p>
         <h3>Каталог</h3>
+    </div>*@
+
+    <div class="block-title on-light text-center">
+        <h2>Каталог</h2>
+
     </div>
 
     <div class="gallery_menu">
@@ -42,10 +47,11 @@
                                     <div class="gallery_info">
                                         <h6>@offer.Product.Group.Title</h6>
                                         <h5>@offer.Product.Title</h5>
-                                        <p>@offer.Price @offer.Currency.Abbr за @offer.Quantity @offer.Unit.Title</p>
+                                        <p>@offer.Price.ToString("C0") за @offer.Quantity @offer.Unit.Title</p>
 
                                         <div class="btns">
                                             <a class="popup-ajax" href="~/product/@offer.Product.SEOurl/details"><i class="pe-7s-search"></i></a>
+                                            @*<a class="ajax-detail" href="#product-d" onclick="slst('@offer.Product.SEOurl')"><i class="pe-7s-search"></i></a>*@
                                             <a href="portfolio-single-v1.html"><i class="pe-7s-cart"></i></a>
                                         </div>
                                     </div>
@@ -54,18 +60,25 @@
                             </div>
                         </div>
 
-               
             </div>
-
+            
         }
-        
-       
 
-       
     </div>
 </section>
 <!-- ***** Project area end ***** -->
 
+@*<div style="display:none;">
+    <div id="product-d">
 
+        @{ Html.RenderAction("Details", "Offers", new { area = string.Empty, url = offer.Product.SEOurl });}
+    </div>
+</div>*@
+
+@section scripts{
+    <script>
+       
+    </script>
+    }
 
 
