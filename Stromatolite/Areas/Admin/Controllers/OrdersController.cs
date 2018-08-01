@@ -11,6 +11,7 @@ using Stromatolite.Models;
 
 namespace Stromatolite.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class OrdersController : Controller
     {
         private StromatoliteModel db = new StromatoliteModel();

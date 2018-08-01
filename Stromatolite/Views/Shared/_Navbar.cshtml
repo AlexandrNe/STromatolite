@@ -2,18 +2,17 @@
 <!-- Add class ".navbar-sticky" to make navbar stuck when it hits the top of the page. You can also use modifier classes like: "navbar-dark", "navbar-ghost navbar-ghost-light", .navbar-ghost navbar-ghost-dark" to change navbar apperance. The screen width at which navbar collapses can be controlled through the variable "nav-collapse" in less/variables.less -->
 <header class="navbar navbar-sticky">
     <div class="container">
-        <!-- Logo icon width can be adjusted trough the variable 'logo-img-max-width' in less/variables.less. The logo width (icon + text) can be adjusted trough the variable 'logo-max-width' in less/variables.less. -->
         <a href="~/" class="logo">
             <img src="~/img/logo/logo007.png" alt="Лемезит" style="max-width:250px;">
-           @* <span style="top: 4px; position: relative;">Лемезит</span>*@
         </a>
 
         <!-- Site Navigation -->
         <nav class="navbar-nav" id="site-menu">
-
-
+            <p style="text-align: left; color: darkslategrey; font-size: 35px; margin-left: 280px;margin-top:20px;">
+                <i class="pe-7s-call"></i> 8(800)550-4-880
+            </p>
             <!-- Navigation -->
-            <ul>
+            @*<ul>
                 <li class="has-mega-menu active">
                     <a href="#">Главная</a>
 
@@ -35,17 +34,23 @@
 
                 </li>
 
-            </ul>
+            </ul>*@
         </nav><!-- Site Navigation End -->
         <!-- Toolbar -->
-        <nav class="navbar-tools" style="height:36px;">
+        <nav class="navbar-tools" style="height:36px; margin-top:20px;">
             <ul>
 
-               
+               <li class="navbar-ghos">
+                   <a id="order-price" href="#order-priceForm" class="btn btn-ghost btn-primary waves-effect waves-light icon-left" style="height:36px; line-height: 36px;padding-top:0;">
+
+                       <i class="pe-7s-cart"></i>
+                       Заказать прайс
+                   </a>
+               </li>
                 <li class="navbar-ghos">
 
 
-                    <a id="order-call" href="#order-callForm" class="btn btn-primary waves-effect waves-light icon-left" style="height:36px;    line-height: 36px;">
+                    <a id="order-call" href="#order-callForm" class="btn btn-primary waves-effect waves-light icon-left" style="height:36px; line-height: 36px;">
                         <i class="pe-7s-call"></i>
                         Обратный звонок
                     </a>
@@ -66,4 +71,11 @@
 
     </div>
 </div>
+
+<div style="display:none;">
+    <div id="order-priceForm">
+
+    </div>
+</div>
+
 

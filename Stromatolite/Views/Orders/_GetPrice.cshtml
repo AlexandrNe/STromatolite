@@ -3,14 +3,14 @@
     Layout = null;
 }
 
-<div id="callback-modal">
+<div id="getprice-modal">
 
-    @using (Ajax.BeginForm("_Callback", "Orders", new { area = string.Empty }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "callback-modal", InsertionMode = InsertionMode.Replace, LoadingElementId = "loadImg" }))
+    @using (Ajax.BeginForm("_GetPrice", "Orders", new { area = string.Empty }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "getprice-modal", InsertionMode = InsertionMode.Replace, LoadingElementId = "loadImg" }))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Обратный звонок</h4>
+            <h4>Получить прайс</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.OrderNum)
@@ -18,8 +18,8 @@
 
             <div class="form-group">
 
-                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Введите Ваш номер телефона...", @required = "required" } })
-                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Введите адрес электронной почты...", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
             </div>
 
@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-md-5">
 
-                        <button type="submit" class="btn btn-ghost btn-primary icon-left" style="width: 100%;"><i class="pe-7s-call"></i>Заказать звонок</button>
+                        <button type="submit" class="btn btn-ghost btn-primary icon-left" style="width: 100%;"><i class="pe-7s-call"></i>Заказать прайс</button>
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-5">

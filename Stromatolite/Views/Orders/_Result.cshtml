@@ -1,15 +1,30 @@
 ﻿@model string
 
-<H3>Ваш заказ № @Model принят</H3>
-<p>Наши менеджеры в ближайшее время свяжутся с Вами для уточнения деталей.</p>
-<p><strong>Спасибо за заказ!</strong></p>
-<hr />
-<p>
-    <em>
-        Если у Вас остались вопросы, то Вы можете позвонить нам по телефону:
-        8(800)550-4-880, либо связаться по email: <a href='mailto:test@test.ru'>test@test.ru</a>.
-    </em>
-</p>
+<div class="container" style="background-color:white;width:600px;">
+    <H3>Ваш заказ № @Model принят</H3>
+    <p>Наши менеджеры в ближайшее время свяжутся с Вами для уточнения деталей.</p>
+    <p><strong>Спасибо за заказ!</strong></p>
+    <hr />
+    <p>
+        <em>
+            Если у Вас остались вопросы, то Вы можете позвонить нам по телефону:
+            8(800)550-4-880, либо связаться по email: <a href='mailto:test@test.ru'>test@test.ru</a>.
+        </em>
+    </p>
 
-<span onclick="$.fancybox.close();" class="btn btn-ghost btn-primary">Продолжить заказы</span>
-<span onclick="$.fancybox.close();" class="btn btn-primary waves-effect waves-light icon-left">Обратный звонок<i class="pe-7s-call"></i></span>
+    <div class="row">
+        <div class="col-md-5">
+
+            <span class="mfp-close btn btn-ghost btn-primary form-control">Продолжить заказы</span>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5">
+            <span class="mfp-close btn btn-primary waves-effect waves-light icon-left form-control">Обратный звонок<i class="pe-7s-call"></i></span>
+        </div>
+    </div>
+
+
+
+
+
+</div>

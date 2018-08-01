@@ -488,32 +488,60 @@ jQuery(document).ready(function($) {
 			                });
 			            };
 
-			            $("a#order").fancybox({
+			            $('.order-ajax').magnificPopup({
+			                type: 'ajax',
+			                elementParse: function (item) {
+			                    this.st.ajax.settings = item.el.data();
 
-			                maxWidth: 700,
-			                maxHeight: 600,
-			                fitToView: false,
-			                width: 'auto',
-			                height: 'auto',
-			                autoSize: true,
-			                scrolling: 'no',
-			                closeClick: false,
-			                openEffect: 'elastic',
-			                closeEffect: 'elastic',
-			                modal: true
+			                }
 			            });
+
 			        }
 			    }
 			});
 		}
 
+		if ($('.order-ajax').length > 0) {
+		    $('.order-ajax').magnificPopup({
+		        type: 'ajax',
+		        elementParse: function (item) {
+		            this.st.ajax.settings = item.el.data();
+		        }
+		    });
+		}
 
 
-        /***/
+	    /***/
+		if ($('.order-call').length > 0) {
+		    $('.order-call').magnificPopup({
+		        type: 'ajax',
+		        elementParse: function (item) {
+		            this.st.ajax.settings = item.el.data();
+
+		        }
+		    });
+		}
+
 		$("a#order-call").fancybox({
 
 		    type: 'ajax',
 		    href: '/Orders/_Callback',
+
+		    fitToView: true,
+		    width: 'auto',
+		    height: 'auto',
+		    autoSize: true,
+		    scrolling: 'no',
+		    closeClick: false,
+		    openEffect: 'elastic',
+		    closeEffect: 'elastic',
+		    modal: true
+		});
+
+		$("a#order-price").fancybox({
+
+		    type: 'ajax',
+		    href: '/Orders/_GetPrice',
 
 		    fitToView: true,
 		    width: 'auto',

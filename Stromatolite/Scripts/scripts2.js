@@ -21,25 +21,25 @@
             function init_map() {
                 myMap = new ymaps.Map(currMap[0], {
                     center: [coordinates[0], coordinates[1]],
-                    zoom: 16,
+                    zoom: 11,
                     controls: ['smallMapDefaultSet']
                 });
                 myMap.behaviors.disable('scrollZoom');
-                //myGeoObject = new ymaps.GeoObject({
-                //    geometry: {
-                //        type: "Point",
-                //        coordinates: [coordinates[0], coordinates[1]]
-                //    },
-                //    properties: {
-                //        iconContent: title,
-                //        hintContent: '',
-                //        balloonContent: '<img width="100px" class="img-thumbnail" src="' + img + '" /><p style="width:150px;">' + title2 + '</p>'
-                //    }
-                //}, {
-                //    preset: 'islands#blueStretchyIcon'
-                //});
+                myGeoObject = new ymaps.GeoObject({
+                    geometry: {
+                        type: "Point",
+                        coordinates: [coordinates[0], coordinates[1]]
+                    },
+                    properties: {
+                        iconContent: title,
+                        hintContent: '',
+                        balloonContent: '<img width="100px" class="img-thumbnail" src="' + img + '" /><p style="width:150px;">' + title2 + '</p>'
+                    }
+                }, {
+                    preset: 'islands#blueStretchyIcon'
+                });
 
-                //myMap.geoObjects.add(myGeoObject)
+                myMap.geoObjects.add(myGeoObject)
 
             }
         })

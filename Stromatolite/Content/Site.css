@@ -432,3 +432,18 @@
   opacity: 1;
 }
 
+
+.mfp-close {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 14px !important;
+  font-weight: 300;
+  opacity: 1;
+  
+}
+.mfp-close:hover,
+.mfp-close:focus {
+  opacity: 1;
+}
+.mfp-close:active {
+  top: 0;
+}

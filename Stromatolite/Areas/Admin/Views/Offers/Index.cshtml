@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Stromatolite.Models.Offer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Список предложений";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить", "Create")
 </p>
 <table class="table">
     <tr>
@@ -53,9 +53,8 @@
             @Html.DisplayFor(modelItem => item.OldPrice)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.OfferID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.OfferID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.OfferID })
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.OfferID }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.OfferID })
         </td>
     </tr>
 }

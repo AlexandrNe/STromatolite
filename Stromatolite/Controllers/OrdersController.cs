@@ -112,6 +112,47 @@ namespace Stromatolite.Controllers
             return PartialView(order);
         }
 
+        public ActionResult _GetPrice()
+        {
+            return View();
+        }
+        // GET: Orders
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult _GetPrice([Bind(Include = "OrderID,Email,FullName,Comment")] Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                if (String.IsNullOrEmpty(order.Email))
+                {
+                    ModelState.AddModelError("", "Заполните адрес электронной почты...");
+                }
+                else
+                {
+                    try
+                    {
+                        order.OrderID = Guid.NewGuid();
+                        order.OrderNum = CalcNum("");
+                        order.OrderDate = DateTime.UtcNow.AddHours(3);
+                        order.Closed = false;
+
+                        order.Comment = "<H4>Прайс</H4>" + DAL.ClearSpecChars(order.Comment);
+                        DAL.uof.OrderRepository.Insert(order);
+                        DAL.uof.Save();
+
+                        return PartialView("_Result3", order.OrderNum);
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+
+            return PartialView(order);
+        }
+
         private string CalcNum(string pref)
         {
             int curDayOfYear = -1 * DateTime.Today.DayOfYear;
