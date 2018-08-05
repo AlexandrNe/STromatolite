@@ -2,6 +2,7 @@
 using Stromatolite.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -56,6 +57,13 @@ namespace Stromatolite.Controllers
                         DAL.uof.OrderRepository.Insert(order);
                         DAL.uof.Save();
 
+                        var notificationEmails = DAL.uof.NotificationEmailRepository.Get();
+                        foreach (var email in notificationEmails)
+                        {
+                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum + " (плитняк-лемезит.рф)", "<h4>Принят заказ №" + order.OrderNum + "</h4>"
+                                + order.Comment);
+                        }
+
                         return PartialView("_Result", order.OrderNum);
 
 
@@ -99,6 +107,14 @@ namespace Stromatolite.Controllers
                         DAL.uof.OrderRepository.Insert(order);
                         DAL.uof.Save();
 
+
+                        var notificationEmails = DAL.uof.NotificationEmailRepository.Get();
+                        foreach (var email in notificationEmails)
+                        {
+                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum + " (плитняк-лемезит.рф)", "<h4>Принят заказ №" + order.OrderNum + "</h4>"
+                                + order.Comment);
+                        }
+
                         return PartialView("_Result2", order.OrderNum);
                     }
                     catch (Exception)
@@ -139,6 +155,18 @@ namespace Stromatolite.Controllers
                         order.Comment = "<H4>Прайс</H4>" + DAL.ClearSpecChars(order.Comment);
                         DAL.uof.OrderRepository.Insert(order);
                         DAL.uof.Save();
+
+                        var mSubject = DAL.uof.GeneralSettingRepository.GetByField(f => f.SettingName == "Тема письма (Прайс)");
+                        var mBody = DAL.uof.GeneralSettingRepository.GetByField(f => f.SettingName == "Текст письма (Прайс)");
+                        var mAttachment = DAL.uof.GeneralSettingRepository.GetByField(f => f.SettingName == "Прайс");
+                        string attachment = Server.MapPath(mAttachment.SettingValue);
+                        MailDelivery.MailSend(order.Email, mSubject.SettingValue, mBody.SettingValue, attachment);
+                        var notificationEmails = DAL.uof.NotificationEmailRepository.Get();
+                        foreach (var email in notificationEmails)
+                        {
+                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum + " (плитняк-лемезит.рф)", "<h4>Принят заказ №" + order.OrderNum + "</h4>"
+                                + order.Comment);
+                        }
 
                         return PartialView("_Result3", order.OrderNum);
                     }

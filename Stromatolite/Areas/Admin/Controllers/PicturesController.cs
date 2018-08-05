@@ -167,8 +167,79 @@ namespace Stromatolite.Areas.Admin.Controllers
             return Json("Файл успешно загружен.");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UploadFile2()
+        {
+
+            string galleryID = Request.Form.GetValues("galleryID")[0];
+
+            string galleryName = MyString.DeleteSpecChars(DAL.uof.GalleryRepository.GetByID(new Guid(galleryID)).Title);
+            int ordMax = 0;
+            IEnumerable<Picture> pics = (IEnumerable<Picture>)(await DAL.uof.PictureRepository.GetAsync(filter: f => f.GalleryID == new Guid(galleryID), orderBy: q => q.OrderBy(d => d.Ord)));
+
+            if (pics != null)
+            {
+                try
+                {
+                    ordMax = (int)pics.Max(p => p.Ord);
+                }
+                catch (Exception)
+                {
+
+                    ordMax = 0;
+                }
+
+            }
+
+            try
+            {
+                foreach (string file in Request.Files)
+                {
+                    ordMax++;
+                    var fileContent = Request.Files[file];
+                    if (fileContent != null && fileContent.ContentLength > 0)
+                    {
+
+                        var stream = fileContent.InputStream;
+
+                        string fType = Path.GetFileName(file);
+
+                        fType = fType.Substring(fType.LastIndexOf("."));
+                        string fileName = MyString.Translit(MyString.HyphenTrim(galleryName)) + "-" + ordMax.ToString() + fType;
+                        string path = Path.Combine(Server.MapPath("~/img/temp/"), fileName);
+                        using (FileStream fs = new FileInfo(path).Create())
+                        {
+                            stream.CopyTo(fs);
+                        }
+
+                        string backFile = Path.Combine(Server.MapPath("~/img/temp"), "template-big2.jpg");
+                        string frontFile = Path.Combine(Server.MapPath("~/img/temp"), "template-front2.png");
+
+                        ImageHelpers.ConvertFile2(path, backFile, frontFile, Server.MapPath("~/img/catalog/product-gallery"), fileName);
+
+                        Picture picture = new Picture { GalleryID = new Guid(galleryID), PicUrl = "/img/catalog/product-gallery/" + fileName, PictureID = Guid.NewGuid(), Ord = ordMax, Title = fileName };
+                        DAL.uof.PictureRepository.Insert(picture);
+                        await DAL.uof.SaveAsync();
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Content("Сбой загрузки: " + e.Message);
+            }
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Index", await DAL.uof.PictureRepository.GetAsync(filter: f => f.GalleryID == new Guid(galleryID), orderBy: q => q.OrderBy(d => d.PicUrl)));
+            }
+
+            return Json("Файл успешно загружен.");
+        }
+
         // GET: Admin/Pictures/Edit/5
-        public async Task<ActionResult> Edit(Guid? id)
+        public async Task<ActionResult> _Edit(Guid? id)
         {
             if (id == null)
             {
@@ -188,7 +259,7 @@ namespace Stromatolite.Areas.Admin.Controllers
         // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "PictureID,Title,PicUrl,GalleryID,Ord")] Picture picture)
+        public async Task<ActionResult> _Edit([Bind(Include = "PictureID,Title,PicUrl,GalleryID,Ord")] Picture picture)
         {
             if (ModelState.IsValid)
             {
@@ -201,7 +272,7 @@ namespace Stromatolite.Areas.Admin.Controllers
         }
 
         // GET: Admin/Pictures/Delete/5
-        public async Task<ActionResult> Delete(Guid? id)
+        public async Task<ActionResult> _Delete(Guid? id)
         {
             if (id == null)
             {
@@ -216,13 +287,21 @@ namespace Stromatolite.Areas.Admin.Controllers
         }
 
         // POST: Admin/Pictures/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(Guid id)
+        public async Task<ActionResult> _DeleteConfirmed(Guid id)
         {
+            Guid galleryId = DAL.uof.PictureRepository.GetByID(id).GalleryID;
             Picture picture = await db.Pictures.FindAsync(id);
             db.Pictures.Remove(picture);
             await db.SaveChangesAsync();
+            if (Request.IsAjaxRequest())
+            {
+               
+                  return RedirectToAction("_Index", new { id = galleryId });
+            
+
+            }
             return RedirectToAction("Index");
         }
 

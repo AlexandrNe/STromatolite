@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Stromatolite.Models.ErrorLog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ErrDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ErrDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(d => d.ErrDate)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ErrDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ErrDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ErrorLogID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ErrorLogID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ErrorLogID })
+        </td>
+    </tr>
+}
+
+</table>

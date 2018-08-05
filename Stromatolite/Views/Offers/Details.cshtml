@@ -14,7 +14,7 @@
 
                 <!-- masterslider -->
                 <div class="master-slider ms-skin-default" id="ms-product-showcase">
-                    @foreach (var picture in Model.Product.Gallery.Pictures.OrderBy(d => d.Ord))
+                    @foreach (var picture in Model.Product.Gallery.Pictures.OrderBy(d => d.Ord).Skip(1))
                     {
                         <div class="ms-slide">
                             <img src="~/Content/masterslider/style/blank.gif" data-src="@Url.Content(picture.PicUrl)" alt="@Model.Product.Title" />
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Product Details -->
-        <div class="col-lg-4 col-md-5" style="margin-top:20px;">
+        <div class="product-details col-lg-4 col-md-5" style="margin-top:20px;">
             <div class="space-top-2x visible-sm visible-xs"></div>
 
             <h3>@Model.Product.TitleFull</h3>
@@ -44,7 +44,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    <div class="count-input space-bottom">
+                    <div class="count-input">
                         <a class="incr-btn" data-action="decrease" href="#">&ndash;</a>
                         <input name="quantity" class="quantity" type="text" value="1">
                         <a class="incr-btn" data-action="increase" href="#">+</a>
@@ -55,19 +55,23 @@
                 </div>
             </div>
 
-            <a class="order-ajax btn btn-ghost btn-primary waves-effect waves-light icon-left" href="/Orders/_Create?offerID=@Model.OfferID">
-              
-            <i class="pe-7s-cart"></i>
-                Заказать</a>
 
+            <div class="row">
+                <div class="col-md-5">
+                    <a class="order-ajax btn btn-ghost btn-primary waves-effect waves-light icon-left" href="/Orders/_Create?offerID=@Model.OfferID">
 
-            <a href="/Orders/_Callback" class="order-call btn btn-primary waves-effect waves-light icon-left">
-                <i class="pe-7s-call"></i>
-                Обратный звонок
-            </a>
-
-          
-
+                        <i class="pe-7s-cart"></i>
+                        Заказать
+                    </a>
+                </div>
+                <div class="col-md-7">
+                    <a href="/Orders/_Callback" class="order-call btn btn-primary waves-effect waves-light icon-left">
+                        <i class="pe-7s-call"></i>
+                        Обратный звонок
+                    </a>
+                </div>
+            </div>
+  
         </div>
             </div>
 </section>

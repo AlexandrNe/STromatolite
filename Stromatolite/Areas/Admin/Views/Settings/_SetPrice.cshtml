@@ -1,0 +1,20 @@
+﻿@model string
+@{ Layout = null;}
+@using (Ajax.BeginForm("SetPrice", "Settings", new { area = "Admin" }, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "" }, new { @id="priceform", @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken();
+    <div class="form-group">
+        <div class="col-md-8">
+            @Html.Editor("PriceUrl", new { htmlAttributes = new { @class = "form-control", @placeholder = "Введите ссылку на прайс, либо выберите файл для загрузки" } })
+        </div>
+        <div class="col-md-4">
+            <label class="btn btn-default form-control" for="filePriceUrl">Выбрать файл<input name="filePriceUrl" id="filePriceUrl" type="file" accept="application/pdf,application/xls" style="display:none;" /></label>
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Загрузить" class="btn btn-success" />
+        </div>
+    </div>*@
+}

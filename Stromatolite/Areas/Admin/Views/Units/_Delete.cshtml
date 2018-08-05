@@ -1,0 +1,36 @@
+﻿@model Stromatolite.Models.Unit
+
+@{
+    Layout = null;
+}
+
+<h3>Удалить данную ед. измерения?</h3>
+<div>
+    <h4>ед. измерения</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+    </dl>
+
+    <div class="row">
+        @using (Ajax.BeginForm("_DeleteConfirmed", "Units", new { area = "Admin", id = Model.UnitID }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "tab-unit", InsertionMode = InsertionMode.Replace, OnSuccess = "$('#unitModalDelete').modal('hide')" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color col-md-6">
+                <input type="submit" value="Удалить" class="form-control btn btn-warning" />
+
+            </div>
+        }
+        <div class="form-actions no-color col-md-6">
+            @Ajax.ActionLink("Отмена", "_Index", "Units", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "tab-unit", OnSuccess = "$('#unitModalDelete').modal('hide')" }, new { @class = "form-control btn btn-default" })
+        </div>
+    </div>
+</div>

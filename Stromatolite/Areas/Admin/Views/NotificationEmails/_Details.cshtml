@@ -1,0 +1,16 @@
+﻿@model Stromatolite.Models.NotificationEmail
+
+@{
+    Layout = null;
+    string trid = "nte" + Model.NotificationEmailID.ToString();
+}
+
+<tr id="@trid">
+    <td>
+        @Html.DisplayFor(model => model.Email)
+    </td>
+    <td>
+        @Ajax.ActionLink(" ", "Edit", "NotificationEmails", new { area = "Admin", id = Model.NotificationEmailID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = trid }, new { @class = "btn btn-sm btn-primary pe-7s-edit", @title = "Редактировать" })
+        @Ajax.ActionLink(" ", "Delete", "NotificationEmails", new { area = "Admin", id = Model.NotificationEmailID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-notEmail-delete", OnSuccess = "$('#notEmailModalDelete').modal('show')", OnFailure = "$('#notEmailModalDelete').modal('show')" }, new { @class = "btn btn-sm btn-primary pe-7s-trash", @title = "Удалить" })
+    </td>
+</tr>

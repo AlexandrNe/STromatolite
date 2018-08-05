@@ -447,3 +447,14 @@
 .mfp-close:active {
   top: 0;
 }
+
+
+/*********************/
+.product-details p{
+    margin-bottom: 6px;
+}
+
+.product-details .btn{
+    padding-left:15px;
+    padding-right:15px;
+}

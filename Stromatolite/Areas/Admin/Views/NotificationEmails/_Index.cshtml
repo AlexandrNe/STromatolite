@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Stromatolite.Models.NotificationEmail>
+
+@{
+    Layout = null;
+}
+
+<table class="table table-bordered table-condensed table-hover table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        string trid = "nte" + item.NotificationEmailID.ToString();
+        <tr id="@trid">
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Ajax.ActionLink(" ", "Edit", "NotificationEmails", new { area = "Admin", id = item.NotificationEmailID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = trid }, new { @class = "btn btn-sm btn-primary pe-7s-edit", @title = "Редактировать" })
+                @Ajax.ActionLink(" ", "Delete", "NotificationEmails", new { area = "Admin", id = item.NotificationEmailID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-notEmail-delete", OnSuccess = "$('#notEmailModalDelete').modal('show')", OnFailure = "$('#notEmailModalDelete').modal('show')" }, new { @class = "btn btn-sm btn-primary pe-7s-trash", @title = "Удалить" })
+            </td>
+        </tr>
+    }
+
+</table>

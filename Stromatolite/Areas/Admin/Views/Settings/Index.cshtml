@@ -9,8 +9,8 @@
     <li class="active"><a href="#general" data-toggle="tab">Основные настройки</a></li>
     <li><a href="#currency" data-toggle="tab">Валюта</a></li>
     <li><a href="#unit" data-toggle="tab">Ед. измерения</a></li>
-    <li><a href="#pricetype" data-toggle="tab">Типы цен</a></li>
-    <li><a href="#customer-groups" data-toggle="tab">Группы покупателей</a></li>
+    <li><a href="#notification" data-toggle="tab">Настройка заказов</a></li>
+    @*<li><a href="#customer-groups" data-toggle="tab">Группы покупателей</a></li>*@
     <li><a href="#gal-categories" data-toggle="tab">Виды галерей</a></li>
     @*<li><a href="#characteristics" data-toggle="tab">Виды характеристик</a></li>*@
 </ul>
@@ -19,9 +19,9 @@
     <div class="tab-pane fade in active" id="general">
         <div class="container">
             <div class="row">
-                @Ajax.ActionLink("Добавить", "Create", "GeneralSettings", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-general", OnSuccess = "$('#generalModal').modal('show')", OnFailure = "$('#generalModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
+                @Ajax.ActionLink("Добавить", "_Create", "GeneralSettings", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-general", OnSuccess = "$('#generalModal').modal('show')", OnFailure = "$('#generalModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
                 <div id="tab-general">
-                   @* @{Html.RenderAction("_Index", "GeneralSettings", new { area = "Admin" });}*@
+                    @{Html.RenderAction("_Index", "GeneralSettings", new { area = "Admin" });}
                 </div>
             </div>
         </div>
@@ -47,26 +47,31 @@
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="pricetype">
+    <div class="tab-pane fade" id="notification">
         <div class="container">
             <div class="row">
-                @Ajax.ActionLink("Добавить", "Create", "PriceTypes", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-pricetype", OnSuccess = "$('#pricetypeModal').modal('show')", OnFailure = "$('#pricetypeModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
-                <div id="tab-pricetype">
-                    @*@{Html.RenderAction("_Index", "PriceTypes", new { area = "Admin" });}*@
+                <div class="col-md-5">
+                    <h3>Список оповещения</h3>
+
+                    @Ajax.ActionLink("Добавить Email", "Create", "NotificationEmails", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-notEmail", OnSuccess = "$('#notEmailModal').modal('show')", OnFailure = "$('#notEmailModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
+
+                    <div id="tab-notEmail">
+                        @{Html.RenderAction("_Index", "NotificationEmails", new { area = "Admin" });}
+
+                    </div>
                 </div>
+                <div class="col-md-7">
+                    <h3>Прайс</h3>
+
+                    @{Html.RenderAction("_SetPrice", "Settings", new { area = "Admin" });}
+
+                </div>
+
+                
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="customer-groups">
-        <div class="container">
-            <div class="row">
-                @Ajax.ActionLink("Добавить", "Create", "CustomerGroups", new { area = "Admin" }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-cg", OnSuccess = "$('#cgModal').modal('show')", OnFailure = "$('#cgModal').modal('show')" }, new { @class = "btn btn-primary", @style = "margin-bottom:15px;" })
-                <div id="tab-cg">
-                   @* @{Html.RenderAction("_Index", "CustomerGroups", new { area = "Admin" });}*@
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <div class="tab-pane fade" id="gal-categories">
         <div class="container">
             <div class="row">
@@ -80,3 +85,97 @@
 
 
 </div>
+
+@************************************************************Адреса оповещения*********************************************************************@
+@{Html.RenderPartial("_ModalAdd", new string[] { "notEmail", "Добавление адреса электронной почты" });}
+@{Html.RenderPartial("_ModalDelete", new string[] { "notEmail", "Удаление адреса электронной почты" });}
+
+@* ***********************************************unit*************************************************************************** *@
+<div class="modal fade" id="unitModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="unitModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h2 class="modal-title" id="unitModalLabel">Добавление ед. изм.</h2>
+            </div>
+            <div class="modal-body">
+                <div id="mod-unit"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="unitModalDelete" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="unitModalDeleteLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h2 class="modal-title" id="unitModalDeleteLabel">Удаление ед. изм.</h2>
+            </div>
+            <div class="modal-body">
+                <div id="mod-unit-delete"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@* ***********************************************characteristic*************************************************************************** *@
+<div class="modal fade" id="generalModal" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="generalModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h2 class="modal-title" id="generalModalLabel">Добавление новой настнойки</h2>
+            </div>
+            <div class="modal-body">
+                <div id="mod-general"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+@section scripts{
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#filePriceUrl').on('change', function (e) {
+
+            var $target = $("#priceform");
+            var token = $target.find('[name=__RequestVerificationToken]').val();
+
+            var files = e.target.files;
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append(files[x].name, files[x]);
+                    }
+                    data.append("__RequestVerificationToken", token);
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/admin/settings/UploadPrice',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {
+                            $("#priceform").html(result);
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            var err = "Ошибка " + " " + status + " " + p3 + " " + p4;
+                            if (xhr.responseText && xhr.responseText[0] == "{")
+                                err = JSON.parse(xhr.responseText).Message;
+                            console.log(err);
+                        }
+                    });
+                } else {
+                    alert("Ваш браузер не поддерживает HTML5 загрузку файлов!");
+                }
+            }
+
+        });
+    })
+
+</script>
+}

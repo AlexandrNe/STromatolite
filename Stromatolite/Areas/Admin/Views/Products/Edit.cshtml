@@ -119,25 +119,40 @@
                             </div>
                             <div id="new-image">
 
-                                <div class="pic-select">
-                                    <h4>Новое изображение</h4>
-                                    @using (Ajax.BeginForm("Create", "Pictures", new { Area = "Admin" }, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "tab-pictures" }, new { @id = "picform", @enctype = "multipart/form-data" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.Hidden("GalleryID", @Model.GalleryID)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Новое изображение (прямоуг.)</h4>
+                                        @using (Ajax.BeginForm("Create", "Pictures", new { Area = "Admin" }, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "tab-pictures" }, new { @id = "picform", @enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Hidden("GalleryID", @Model.GalleryID)
 
-                                        
-                                         <label class="col-md-2"><input type="radio" name="pic" id="pic1" value="0" checked> Загрузить файлы: </label>
-                                         <div class="col-md-10">
-                                             <input type="file" multiple accept="image/*" name="uploadImage" id="uploadImage" value=" " />
-                                         </div>
-                                        
-                                    }
+
+                                            <label class="col-md-2"><input type="radio" name="pic" id="pic1" value="0" checked> Загрузить файлы: </label>
+                                            <div class="col-md-10">
+                                                <input type="file" multiple accept="image/*" name="uploadImage" id="uploadImage" value=" " />
+                                            </div>
+
+                                        }
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4>Новое изображение (квадрат)</h4>
+                                        @using (Ajax.BeginForm("Create", "Pictures", new { Area = "Admin" }, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "tab-pictures" }, new { @id = "picform2", @enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            @Html.Hidden("GalleryID", @Model.GalleryID)
+
+
+                                            <label class="col-md-2"><input type="radio" name="pic2" id="pic12" value="0" checked> Загрузить файлы: </label>
+                                            <div class="col-md-10">
+                                                <input type="file" multiple accept="image/*" name="uploadImage" id="uploadImage2" value=" " />
+                                            </div>
+
+                                        }
+                                    </div>
+                                    
                                 </div>
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -151,6 +166,10 @@
 <div>
     @Html.ActionLink("К списку продукции", "Index", new { area = "Admin" }, new { @class = "btn btn-default" })
 </div>
+
+@*********************************************************************************************************************************@
+@{Html.RenderPartial("_ModalAdd", new string[] { "picture", "Добавление изображения" });}
+@{Html.RenderPartial("_ModalDelete", new string[] { "picture", "Удаление изображения" });}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -195,7 +214,43 @@
                 }
             }
         });
+        /******************************************/
+        $('#uploadImage2').on('change', function (e) {
 
+            var $target = $("#picform2");
+            var token = $target.find('[name=__RequestVerificationToken]').val();
+
+            var files = e.target.files;
+            if (files.length > 0) {
+                if (window.FormData !== undefined) {
+                    var data = new FormData();
+                    for (var x = 0; x < files.length; x++) {
+                        data.append(files[x].name, files[x]);
+                    }
+                    data.append("galleryID", "@Model.GalleryID");
+                    data.append("__RequestVerificationToken", token);
+
+                    $.ajax({
+                        type: "POST",
+                        url: '/admin/pictures/UploadFile2',
+                        contentType: false,
+                        processData: false,
+                        data: data,
+                        success: function (result) {
+                            $("#tab-pictures").html(result);
+                        },
+                        error: function (xhr, status, p3, p4) {
+                            var err = "Ошибка " + " " + status + " " + p3 + " " + p4;
+                            if (xhr.responseText && xhr.responseText[0] == "{")
+                                err = JSON.parse(xhr.responseText).Message;
+                            console.log(err);
+                        }
+                    });
+                } else {
+                    alert("Ваш браузер не поддерживает HTML5 загрузку файлов!");
+                }
+            }
+        });
     });
 
 

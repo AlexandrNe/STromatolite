@@ -44,8 +44,8 @@
                 @Html.DisplayFor(modelItem => item.Ord)
             </td>
             <td>
-                @Ajax.ActionLink(" ", "Edit", "Pictures", new { area = "Admin", id = item.PictureID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-picture", OnSuccess = "$('#pictureModal').modal('show')", OnFailure = "$('#pictureModal').modal('show')" }, new { @class = "btn btn-sm btn-primary pe-7s-edit", @title = "Редактировать" })
-                @Ajax.ActionLink(" ", "Delete", "Pictures", new { area = "Admin", id = item.PictureID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-picture-delete", OnSuccess = "$('#pictureModalDelete').modal('show')", OnFailure = "$('#pictureModalDelete').modal('show')" }, new { @class = "btn btn-sm btn-primary pe-7s-trash", @title = "Удалить" })
+                @Ajax.ActionLink(" ", "_Edit", "Pictures", new { area = "Admin", id = item.PictureID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-picture", OnSuccess = "$('#pictureModal').modal('show')", OnFailure = "$('#pictureModal').modal('show')" }, new { @class = "btn btn-sm btn-primary pe-7s-edit", @title = "Редактировать" })
+                @Ajax.ActionLink(" ", "_Delete", "Pictures", new { area = "Admin", id = item.PictureID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-picture-delete", OnSuccess = "$('#pictureModalDelete').modal('show')", OnFailure = "$('#pictureModalDelete').modal('show')" }, new { @class = "btn btn-sm btn-primary pe-7s-trash", @title = "Удалить" })
             </td>
         </tr>
     }

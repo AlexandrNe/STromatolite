@@ -10,11 +10,14 @@ namespace Stromatolite.DAL
     public class UnitOfWork: IDisposable
     {
         private StromatoliteModel context = new StromatoliteModel();
-        
+
+        private GenericRepository<ErrorLog> errorLogRepository;
         private GenericRepository<Currency> currencyRepository;
         private GenericRepository<GalCategory> galCategoryRepository;
         private GenericRepository<Gallery> galleryRepository;
+        private GenericRepository<GeneralSetting> generalSettingRepository;
         private GenericRepository<Group> groupRepository;
+        private GenericRepository<NotificationEmail> notificationEmailRepository;
         private GenericRepository<Offer> offerRepository;
         private GenericRepository<Order> orderRepository;
         private GenericRepository<Picture> pictureRepository;
@@ -22,7 +25,17 @@ namespace Stromatolite.DAL
         private GenericRepository<Unit> unitRepository;
 
         /****************************************************************************************************************************************/
-
+        public GenericRepository<ErrorLog> ErrorLogRepository
+        {
+            get
+            {
+                if (this.errorLogRepository== null)
+                {
+                    this.errorLogRepository = new GenericRepository<ErrorLog>(context);
+                }
+                return errorLogRepository;
+            }
+        }
 
         public GenericRepository<Currency> CurrencyRepository
         {
@@ -60,6 +73,18 @@ namespace Stromatolite.DAL
             }
         }
 
+        public GenericRepository<GeneralSetting> GeneralSettingRepository
+        {
+            get
+            {
+                if (this.generalSettingRepository == null)
+                {
+                    this.generalSettingRepository = new GenericRepository<GeneralSetting>(context);
+                }
+                return generalSettingRepository;
+            }
+        }
+
         public GenericRepository<Group> GroupRepository
         {
             get
@@ -69,6 +94,18 @@ namespace Stromatolite.DAL
                     this.groupRepository = new GenericRepository<Group>(context);
                 }
                 return groupRepository;
+            }
+        }
+
+        public GenericRepository<NotificationEmail> NotificationEmailRepository
+        {
+            get
+            {
+                if (this.notificationEmailRepository == null)
+                {
+                    this.notificationEmailRepository = new GenericRepository<NotificationEmail>(context);
+                }
+                return notificationEmailRepository;
             }
         }
 

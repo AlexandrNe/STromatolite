@@ -1,0 +1,21 @@
+﻿@model string[]
+@{
+    string idMod = Model[0] + "ModalDelete";
+    string idModLabel = Model[0] + "ModalDeleteLabel";
+    string idModBody = "mod-" + Model[0] + "-delete";
+}
+
+<div class="modal fade" id="@idMod" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="@idModLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+                <h2 class="modal-title" id="@idModLabel">@Model[1]</h2>
+            </div>
+            <div class="modal-body">
+                <div id="@idModBody"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

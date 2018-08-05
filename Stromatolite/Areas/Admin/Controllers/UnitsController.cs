@@ -29,43 +29,41 @@ namespace Stromatolite.Areas.Admin.Controllers
             return PartialView(units);
         }
 
-        // GET: Admin/Units/Details/5
-        //public async Task<ActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Unit unit = await db.Units.FindAsync(id);
-        //    if (unit == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(unit);
-        //}
-
         // GET: Admin/Units/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Units/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Create([Bind(Include = "UnitID,Title")] Unit unit)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Units.Add(unit);
-        //        await db.SaveChangesAsync();
-        //        return RedirectToAction("Index");
-        //    }
+        //POST: Admin/Units/Create
+        //Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку.Дополнительные
+        //сведения см. в статье http://go.microsoft.com/fwlink/?LinkId=317598.
+       [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "UnitID,Title")] Unit uNit)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    DAL.uof.UnitRepository.Insert(uNit);
+                    await DAL.uof.SaveAsync();
 
-        //    return View(unit);
-        //}
+                    if (Request.IsAjaxRequest())
+                    {
+                        return RedirectToAction("_Index");
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
+            return View(uNit);
+        }
 
         // GET: Admin/Units/Edit/5
         //public async Task<ActionResult> Edit(int? id)
@@ -98,32 +96,37 @@ namespace Stromatolite.Areas.Admin.Controllers
         //    return View(unit);
         //}
 
-        // GET: Admin/Units/Delete/5
-        //public async Task<ActionResult> Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Unit unit = await db.Units.FindAsync(id);
-        //    if (unit == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(unit);
-        //}
+        //GET: Admin/Units/Delete/5
+        public async Task<ActionResult> _Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Unit unit = await DAL.uof.UnitRepository.GetByIDAsync(id);
+            if (unit == null)
+            {
+                return HttpNotFound();
+            }
+            return View(unit);
+        }
 
         // POST: Admin/Units/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> DeleteConfirmed(int id)
-        //{
-        //    Unit unit = await db.Units.FindAsync(id);
-        //    db.Units.Remove(unit);
-        //    await db.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> _DeleteConfirmed(int id)
+        {
+            DAL.uof.UnitRepository.Delete(id);
 
-       
+            await DAL.uof.SaveAsync();
+            if (Request.IsAjaxRequest())
+            {
+                return RedirectToAction("_Index");
+            }
+
+                return RedirectToAction("Index");
+        }
+
+
     }
 }

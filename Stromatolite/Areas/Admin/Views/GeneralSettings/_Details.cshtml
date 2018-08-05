@@ -1,0 +1,18 @@
+﻿@model Stromatolite.Models.GeneralSetting
+
+@{
+    Layout = null;
+    string trid = "gen" + Model.GeneralSettingID.ToString();
+}
+<tr id="@trid">
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.SettingName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => modelItem.SettingValue)
+    </td>
+    <td>
+        @Ajax.ActionLink(" ", "Edit", "GeneralSettings", new { area = "Admin", id = Model.GeneralSettingID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = trid }, new { @class = "btn btn-sm btn-primary pe-7s-edit" })
+        @*@Ajax.ActionLink(" ", "Delete", "ContactData", new { area = "Admin", id = item.GeneralSettingID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-contactData-delete", OnSuccess = "$('#contactDataModalDelete').modal('show')", OnFailure = "$('#contactDataModalDelete').modal('show')" }, new { @class = "btn btn-sm btn-primary fa fa-trash-o" })*@
+    </td>
+</tr>

@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<Stromatolite.Models.Unit>
+    @{ 
+        Layout = null;
+    }
 
 <table class="table table-bordered table-hover table-responsive table-striped">
     <tr>
@@ -23,7 +26,7 @@
                 </td>*@
             <td>
                 @Ajax.ActionLink("Редактировать", "Edit", "Units", new { area = "Admin", id = item.UnitID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.ReplaceWith, UpdateTargetId = trid }, new { @class = "btn btn-sm btn-primary" })
-                @Ajax.ActionLink("Удалить", "Delete", "Units", new { area = "Admin", id = item.UnitID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-unit-delete", OnSuccess = "$('#unitModalDelete').modal('show')", OnFailure = "$('#unitModalDelete').modal('show')" }, new { @class = "btn btn-sm btn-primary" })
+                @Ajax.ActionLink("Удалить", "_Delete", "Units", new { area = "Admin", id = item.UnitID }, new AjaxOptions { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "mod-unit-delete", OnSuccess = "$('#unitModalDelete').modal('show')", OnFailure = "$('#unitModalDelete').modal('show')" }, new { @class = "btn btn-sm btn-primary" })
             </td>
         </tr>
     }
