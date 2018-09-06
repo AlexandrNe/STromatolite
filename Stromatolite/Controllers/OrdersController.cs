@@ -53,14 +53,17 @@ namespace Stromatolite.Controllers
 
                         order.Comment = "<p>Наименование товара: " + "<em>" + offer.Product.TitleFull + "</em>" + "</p>" +
                             "<p>Количество: " + "<em>" + quantity + "</em> " + offer.Unit.Title + "</p> </hr>" +
-                            DAL.ClearSpecChars(order.Comment);
+                            DAL.tagStop(order.Comment);
                         DAL.uof.OrderRepository.Insert(order);
                         DAL.uof.Save();
 
                         var notificationEmails = DAL.uof.NotificationEmailRepository.Get();
                         foreach (var email in notificationEmails)
                         {
-                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum + " (плитняк-лемезит.рф)", "<h4>Принят заказ №" + order.OrderNum + "</h4>"
+                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum, "<h4>Принят заказ №" + order.OrderNum + " от "+order.OrderDate+"</h4>"
+                                +"<p>Email: <em><a href='mailto:" +order.Email+ "'>"+ order.Email + "</a></em></p>"
+                                +"<p>Тел.: <em>" + order.PhoneNumber + "</em></p>"
+                                + "<p>От: <em>" + order.FullName+ "</em></p>"
                                 + order.Comment);
                         }
 
@@ -103,7 +106,7 @@ namespace Stromatolite.Controllers
                         order.OrderDate = DateTime.UtcNow.AddHours(3);
                         order.Closed = false;
 
-                        order.Comment = DAL.ClearSpecChars(order.Comment);
+                        order.Comment = DAL.tagStop(order.Comment);
                         DAL.uof.OrderRepository.Insert(order);
                         DAL.uof.Save();
 
@@ -111,7 +114,9 @@ namespace Stromatolite.Controllers
                         var notificationEmails = DAL.uof.NotificationEmailRepository.Get();
                         foreach (var email in notificationEmails)
                         {
-                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum + " (плитняк-лемезит.рф)", "<h4>Принят заказ №" + order.OrderNum + "</h4>"
+                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum , "<h4>Принят заказ №" + order.OrderNum + " от "+ order.OrderDate+"</h4>"
+                                + "<p>Заявка на обратный звонок: <em>"+order.PhoneNumber+"</em></p>"
+                                + "<p>От: <em>" + order.FullName + "</em></p>"
                                 + order.Comment);
                         }
 
@@ -152,7 +157,7 @@ namespace Stromatolite.Controllers
                         order.OrderDate = DateTime.UtcNow.AddHours(3);
                         order.Closed = false;
 
-                        order.Comment = "<H4>Прайс</H4>" + DAL.ClearSpecChars(order.Comment);
+                        order.Comment = "<H4>Прайс</H4>" + DAL.tagStop(order.Comment);
                         DAL.uof.OrderRepository.Insert(order);
                         DAL.uof.Save();
 
@@ -164,7 +169,9 @@ namespace Stromatolite.Controllers
                         var notificationEmails = DAL.uof.NotificationEmailRepository.Get();
                         foreach (var email in notificationEmails)
                         {
-                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum + " (плитняк-лемезит.рф)", "<h4>Принят заказ №" + order.OrderNum + "</h4>"
+                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum, "<h4>Принят заказ №" + order.OrderNum + " от "+order.OrderDate+"</h4>"
+                                + "<p>Email: <em><a href='mailto:" + order.Email + "'>" + order.Email + "</a></em></p>"
+                                + "<p>От: <em>" + order.FullName + "</em></p>"
                                 + order.Comment);
                         }
 

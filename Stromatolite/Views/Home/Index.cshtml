@@ -29,52 +29,77 @@
     </div>
 
     <div class="gallery_full_width_images_area clearfix">
-        
+       
         @foreach (var offer in Model.Offers)
         {
-            <!-- Single gallery Item Start -->
-            <div class="single_gallery_item @offer.Product.GroupID">
-                @if (offer.Product.Gallery.Pictures.Any())
-                {
-                    <img src="@Url.Content(offer.Product.Gallery.Pictures.OrderBy(d => d.Ord).FirstOrDefault().PicUrl)" alt="@offer.Product.TitleFull">
-                }
-                @*<img src="~img/gallery/1.jpg" alt="">*@
-                <!-- Single gallery Item hover caption -->
+            <div class="tile single_gallery_item @offer.Product.GroupID">
+                <div class="tile-thumb">
+                  @*  <span class="badge badge-circle badge-danger">Распродажа</span>*@
 
-                        <div class="hover_overlay">
-                            <div class="classy-table">
-                                <div class="classy-table-cell">
-                                    <div class="gallery_info">
-                                        <h6>@offer.Product.Group.Title</h6>
-                                        <h5>@offer.Product.Title</h5>
-                                        <p>@offer.Price.ToString("C0") за @offer.Quantity @offer.Unit.Title</p>
+                    <a class="popup-ajax overlay" href="~/product/@offer.Product.SEOurl"></a>
+                    <div class="img-cont">
+                        @if (offer.Product.Gallery.Pictures.Any())
+                        {
+                            <img src="@Url.Content(offer.Product.Gallery.Pictures.OrderBy(d => d.Ord).FirstOrDefault().PicUrl)" alt="@offer.Product.TitleFull">
+                        }
+                        @*<img src="img/shop/tiles/01.jpg" alt="Thumbnail">*@
+                    </div>
+                </div>
+                <div class="tile-body">
+                    <h6 class="text-center">@offer.Product.Group.Title</h6>
+                    <a class="popup-ajax tile-title" href="~/product/@offer.Product.SEOurl"><h3>@offer.Product.Title</h3></a>
+                    @*<span class="shop-old-price">$178</span>*@
+                    <span class="shop-price">@offer.Price.ToString("C0") <span style="color:#c7c7c7">за</span> @offer.Quantity 
+                    @if(offer.Unit.Title == "м2")
+                    { 
+                        @: м<sup>2</sup> 
+                        }
+                    else
+                    {
+                        @: @offer.Unit.Title;
+                    }</span><br>
+                    <a href="/Orders/_Create?offerID=@offer.OfferID" class="order-ajax btn btn-primary btn-ghost btn-sm icon-left waves-effect waves-light"><i class="pe-7s-cart"></i>Заказать</a>
 
-                                        <div class="btns">
-                                            <a class="popup-ajax" href="~/product/@offer.Product.SEOurl/details"><i class="pe-7s-search"></i></a>
-                                           
+                </div>
+                <footer class="tile-footer text-left">
+                    <div class="post-meta">
+                        <div class="taxonomy">
+                            @*<span>В </span>*@
+                            @if (!string.IsNullOrEmpty(offer.Product.Description))
+                            {
+                                string substr = "";
+                                if (offer.Product.Description.Length > 90)
+                                {
+                                    var len = offer.Product.Description.LastIndexOf("</", 90);
+                                    if (len == -1)
+                                    {
+                                        len = offer.Product.Description.LastIndexOf(" ", 90);
+                                    }
+                                    if (len != -1)
+                                    {
+                                        substr = offer.Product.Description.Substring(0, len) + "...";
+                                    }
+                                }
+                                else
+                                {
+                                    substr = offer.Product.Description;
+                                }
 
-                                            <a class="order-ajax" href="/Orders/_Create?offerID=@offer.OfferID"><i class="pe-7s-cart"></i></a>
-                                        </div>
-                                    </div>
+                                @Html.Raw(substr)
+                            }
 
-                                </div>
-                            </div>
                         </div>
-
+                    </div>
+                </footer>
             </div>
-            
+      
         }
 
     </div>
+
+    
 </section>
-<!-- ***** Project area end ***** -->
 
-@*<div style="display:none;">
-    <div id="product-d">
-
-        @{ Html.RenderAction("Details", "Offers", new { area = string.Empty, url = offer.Product.SEOurl });}
-    </div>
-</div>*@
 
 @section scripts{
     <script>

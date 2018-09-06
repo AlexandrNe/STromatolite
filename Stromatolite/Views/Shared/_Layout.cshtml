@@ -4,16 +4,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <meta name="description" content="плитняк-лемезит.рф Облицовочный камень лемезит с доставкой от производителя" />
-    <meta name="keywords" content="купить лемезит, плитняк лемезит, натуральный камень, облицовочный камень" />
+    @{if (ViewBag.MetaDescription == null)
+    {
+        ViewBag.MetaDescription = "плитняк-лемезит.рф Облицовочный камень лемезит с доставкой от производителя";
+    }
+    if (ViewBag.MetaKeywords == null)
+    {
+        ViewBag.MetaKeywords = "купить лемезит, плитняк лемезит, натуральный камень, облицовочный камень";
+    }
+    if (ViewBag.Title == null)
+    {
+        ViewBag.Title = "ЛЕМЕЗИТ";
+    }}
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    <meta name="keywords" content="@ViewBag.MetaKeywords" />
     <meta name="author" content="AlexandrNe" />
 
-    <title>ЛЕМЕЗИТ</title>
+    <meta name="yandex-verification" content="4bc3e581eabd899c" />
+
+    <title>@ViewBag.Title</title>
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="~/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/img/favicon.ico" type="image/x-icon">
 
     <!-- Vendor Styles -->
     @Styles.Render("~/Content/revolution")
@@ -24,6 +37,36 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/fancybox/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter50066596 = new Ya.Metrika2({
+                    id:50066596,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/50066596" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
 </head>
 <body class="parallax">
@@ -73,27 +116,9 @@
                 <i class="pe-7s-map"></i>
                 <span>Свернуть карту</span>
             </div>
-            <!-- Data API:
-                 data-height="500" height of the map in pixels
-                 data-address="Your address" string
-                 data-zoom="number" to control map zoom when loaded
-                 data-disable-controls="false/true" enable/disable map controls like pan, zoom, etc.
-                 data-scrollwheel="true/false" enable/disable mouse scroll wheel zoom
-                 data-marker="path_to_your_image" path to custom marker image
-                 data-marker-title=" Your title" appears on marker hover
-                 data-styles="[array]" you can adjust the look and feel of your map. Recommend to use https://snazzymaps.com
-             -->
-           @* <div id="map" style="width:100%;height:500px;position:relative"></div>*@
 
             <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="54.752074,58.198443" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
-            @*<div class="google-map"
-                 data-height="500"
-                 data-address="Lviv, UA"
-                 data-zoom="6"
-                 data-disable-controls="false"
-                 data-scrollwheel="true"
-                 data-marker="../img/map-marker.png"
-                 data-marker-title="8 Guild Office"></div>*@
+
         </div>
     </section>
         <hr />

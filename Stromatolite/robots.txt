@@ -1,0 +1,28 @@
+﻿
+User-agent: *
+Disallow: /UserAccount/
+Disallow: /useraccount/ 
+Disallow: /Admin/
+Disallow: /admin/
+Disallow: /offers$
+Disallow: /info$
+Disallow: /product$
+Disallow: /offers/$
+Disallow: /info/$
+Disallow: /product/$
+Disallow: /checkout
+Disallow: /shopping-cart
+Disallow: /wishlist
+Disallow: /Review/Create
+Disallow: /review/create
+Disallow: *?p=
+Disallow: *?q=
+
+Disallow: /Offers/_
+Disallow: /offers/_
+
+Disallow: /Orders/
+Disallow: /orders/
+
+Sitemap: http://xn----jtbaibejgdlgv5bj0q.xn--p1ai/sitemap.xml
+Host: xn----jtbaibejgdlgv5bj0q.xn--p1ai

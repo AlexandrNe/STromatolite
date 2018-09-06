@@ -16451,9 +16451,11 @@ hr.no-space {
 }
 .tile .tile-body {
   text-align: center;
-  padding: 22px;
+  /*padding: 22px;*/
   max-width: 600px;
   margin: 0 auto;
+  min-height: 170px;
+  vertical-align:middle;
 }
 .tile .tile-body p {
   font-size: 13px;
