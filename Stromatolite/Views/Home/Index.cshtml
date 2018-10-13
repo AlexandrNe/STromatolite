@@ -5,15 +5,8 @@
 <!-- ***** Project area start ***** -->
 <section class="gallery_area section_padding_100_0 clearfix" id="work">
 
-    <!-- Section Heading Start -->
-    @*<div class="section_heading">
-        <p>Наша продукция</p>
-        <h3>Каталог</h3>
-    </div>*@
-
     <div class="block-title on-light text-center">
-        <h2>Каталог</h2>
-
+        <h1 style="font-size:36px;">Каталог</h1>
     </div>
 
     <div class="gallery_menu">
@@ -23,13 +16,11 @@
             {
                 <button class="btn_" type="button" data-filter=".@group.GroupID">@group.Title</button>
             }
-
-
         </div>
     </div>
 
     <div class="gallery_full_width_images_area clearfix">
-       
+
         @foreach (var offer in Model.Offers)
         {
             <div class="tile single_gallery_item @offer.Product.GroupID">
@@ -42,12 +33,13 @@
                         {
                             <img src="@Url.Content(offer.Product.Gallery.Pictures.OrderBy(d => d.Ord).FirstOrDefault().PicUrl)" alt="@offer.Product.TitleFull">
                         }
-                        @*<img src="img/shop/tiles/01.jpg" alt="Thumbnail">*@
                     </div>
                 </div>
                 <div class="tile-body">
                     <h6 class="text-center">@offer.Product.Group.Title</h6>
-                    <a class="popup-ajax tile-title" href="~/product/@offer.Product.SEOurl"><h3>@offer.Product.Title</h3></a>
+                    <div class="tile-h">
+                        <a class="popup-ajax tile-title" href="~/product/@offer.Product.SEOurl"><h2 style="font-size:24px;">@offer.Product.Title</h2></a>
+                    </div>
                     @*<span class="shop-old-price">$178</span>*@
                     <span class="shop-price">@offer.Price.ToString("C0") <span style="color:#c7c7c7">за</span> @offer.Quantity 
                     @if(offer.Unit.Title == "м2")
@@ -84,26 +76,18 @@
                                 {
                                     substr = offer.Product.Description;
                                 }
-
                                 @Html.Raw(substr)
                             }
-
                         </div>
                     </div>
                 </footer>
             </div>
-      
         }
-
     </div>
-
-    
 </section>
-
 
 @section scripts{
     <script>
-       
     </script>
     }
 

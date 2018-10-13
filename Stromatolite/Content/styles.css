@@ -16480,7 +16480,11 @@ hr.no-space {
 }
 .tile .tile-footer {
   text-align: center;
-  padding: 8px 10px 22px 10px;
+  padding: 5px 5px 5px 5px;
+  height:72px;
+}
+.tile .tile-h{
+    height:50px;
 }
 .tile.tile-horizontal {
   width: 100%;

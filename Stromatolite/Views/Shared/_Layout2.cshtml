@@ -11,28 +11,27 @@
   gtag('config', 'UA-125827870-1');
     </script>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     @{if (ViewBag.MetaDescription == null)
-    {
-        ViewBag.MetaDescription = "плитняк-лемезит.рф Облицовочный камень лемезит с доставкой от производителя";
-    }
-    if (ViewBag.MetaKeywords == null)
-    {
-        ViewBag.MetaKeywords = "купить лемезит, плитняк лемезит, натуральный камень, облицовочный камень";
-    }
-    if (ViewBag.Title == null)
-    {
-        ViewBag.Title = "ЛЕМЕЗИТ";
-    }}
+        {
+            ViewBag.MetaDescription = "плитняк-лемезит.рф Облицовочный камень лемезит с доставкой от производителя";
+        }
+        if (ViewBag.MetaKeywords == null)
+        {
+            ViewBag.MetaKeywords = "купить лемезит, плитняк лемезит, натуральный камень, облицовочный камень";
+        }
+        if (ViewBag.Title == null)
+        {
+            ViewBag.Title = "ЛЕМЕЗИТ";
+        }}
     <meta name="description" content="@ViewBag.MetaDescription" />
     <meta name="keywords" content="@ViewBag.MetaKeywords" />
     <meta name="author" content="AlexandrNe" />
-
-    @*<meta name="yandex-verification" content="4bc3e581eabd899c" />*@
+    
+   @* <meta name="yandex-verification" content="4bc3e581eabd899c" />*@
     <meta name="yandex-verification" content="9c640d876748bd99" />
-
     <title>@ViewBag.Title</title>
 
     <!--Favicon-->
@@ -41,7 +40,7 @@
 
     <!-- Vendor Styles -->
     @Styles.Render("~/Content/revolution")
-   
+
 
     <!--Modernizr / Detectizr-->
     @Styles.Render("~/Content/masterslider/css")
@@ -77,6 +76,7 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/50066596" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->*@
+
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
     (function (d, w, c) {
@@ -105,6 +105,7 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/50334613" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+
 </head>
 <body class="parallax">
     <!-- Preloader -->
@@ -120,46 +121,26 @@
 
     @Html.Partial("_Navbar")
 
-    @Html.Partial("_Slider")
-    @**************************************************************************************************@
-    <!-- Hero -->
-    <section class="section-fw section-css-parallax text-light" style="background-image:url(img/homepage/corporate/fullwidth-slider/back02.jpg);">
-        <div class="container text-light">
-            <div class="row" style="margin-top:100px;margin-bottom:100px;">
-                <div class="col-md-2"></div>
-                <div class="col-md-9" style="background-color: rgba(51, 51, 51, 0.56);border-radius: 15px;">
-                    <blockquote style="font-size:50px;" class="text-center">
-                        Все виды лемезита от производителя – от 130 руб./м<sup>2</sup>
-                    </blockquote>
-                </div>
 
-            </div>
-        </div>
+    @RenderBody()
 
-    </section><!-- Hero End -->
-    @****************************************************************************************************************@
+   
 
-   @* <div class="body-content">*@
-        @RenderBody()
 
-    @Html.Partial("_About")
-
-    
     @****************************************************************************************************************@
     <section>
-        <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="54.75,58.19" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
         <!-- Collapsable version -->
-        @*<div class="map-collapse">
+        <div class="map-collapse">
             <div class="map-collapse-toggle" data-collapse-title="Свернуть карту" data-expand-title="Развернуть карту">
                 <i class="pe-7s-map"></i>
                 <span>Свернуть карту</span>
             </div>
-    
-            <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="56.843255,60.660069" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
 
-        </div>*@
+            <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="54.752074,58.198443" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
+
+        </div>
     </section>
-        <hr />
+    <hr />
     <footer itemscope itemtype="http://schema.org/Organization">
         <p>
             &copy; @DateTime.Now.Year –
@@ -174,7 +155,7 @@
             </span>
         </p>
     </footer>
-   @* </div>*@
+    @* </div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -191,6 +172,6 @@
 
     @RenderSection("scripts", required: false)
 
-    
+
 </body>
 </html>

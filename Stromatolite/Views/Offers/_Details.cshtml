@@ -1,13 +1,10 @@
 ﻿@model Stromatolite.Models.Offer
-     
-@{ 
-    Layout = "~/Views/Shared/_Layout2.cshtml";
-    ViewBag.Title = Model.Product.TitleFull + " купить в интернет магазине www.kamenmarket.com | " + Model.Product.TitleFull + " – цена, фото, доставка по Москве и России";
-    ViewBag.MetaDescription = "Купить " + Model.Product.TitleFull + " с доставкой или самовывозом. Покупайте в интернет магазине www.kamenmarket.com на выгодных условиях. Низкие цены, быстрая доставка по всей России. " + Model.Product.MetaDescription;
-    ViewBag.MetaKeywords = Model.Product.KeyWords;
+
+@{
+    Layout = null;
 }
 
-<section class="container space-bottom-2x space-top-2x" style="background-color:whitesmoke;" itemscope itemtype="http://schema.org/Product">
+<section class="container space-bottom-2x space-top-2x" style="background-color:whitesmoke;">
     <!-- Row -->
     <div class="row">
 
@@ -34,24 +31,21 @@
         <!-- Product Details -->
         <div class="product-details col-lg-4 col-md-5" style="margin-top:20px;">
             <div class="text-right">
-                <a href="~/" class="waves-effect waves-light icon-left" style="position:absolute;top:-15px;right:5px;">
-
-                    <i class="pe-7s-close" style="font-size:25px; color:#3a3a3a;"></i>
-                </a>
-            </div>
+            <span onclick="$.magnificPopup.close();" class="waves-effect waves-light icon-left" style="position:absolute;top:-15px;right:5px;">
+                
+                <i class="pe-7s-close" style="font-size:25px;" ></i>
+                </span></div>
             <div class="space-top-2x visible-sm visible-xs"></div>
 
-            <h1 itemprop="name" style="font-size:24px;">@Model.Product.TitleFull</h1>
-            <div itemprop="description">
-                @Html.Raw(Model.Product.Description)
-            </div>
-            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <h3>@Model.Product.TitleFull</h3>
+            @Html.Raw(Model.Product.Description)
+
+            <div>
                 @if (Model.OldPrice > Model.Price)
                 {
                     <span class="shop-old-price">@Model.OldPrice</span>
                 }
-                <span itemprop="price" class="shop-price">@Model.Price.ToString("C0")</span>
-                <span style="display:none;" itemprop="priceCurrency">RUB</span>
+                <span class="shop-price">@Model.Price.ToString("C0")</span>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -81,24 +75,9 @@
                         Обратный звонок
                     </a>
                 </div>
+                
             </div>
-  
+
         </div>
-            </div>
+    </div>
 </section>
-
-@section scripts{
-    <script>
-        var prodShowSlider = new MasterSlider();
-
-        prodShowSlider.control('arrows');
-        prodShowSlider.control('thumblist', { autohide: false, dir: 'v', arrows: false, align: 'right', width: 127, height: 137, margin: 5, space: 5, hideUnder: 520 });
-
-        prodShowSlider.setup('ms-product-showcase', {
-            width: 613,
-            height: 565,
-            space: 5,
-            view: 'parallaxMask'
-        });
-    </script>
-    }

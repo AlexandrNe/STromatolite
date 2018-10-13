@@ -42,7 +42,11 @@ namespace Stromatolite.Controllers
             {
                 return HttpNotFound();
             }
-
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_Details", offer);
+            }
+            ViewBag.Title = offer.Product.TitleFull;
             return View(offer);
         }
 
