@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,28 +16,28 @@ namespace Stromatolite.Controllers
         private DataAccessLayer DAL = new DataAccessLayer();
 
         // GET: Offers
-        public ActionResult Index()
-        {
-            OfferViewModel offerViewModel = new OfferViewModel();
-            var offers = DAL.uof.OfferRepository.Get();
-            return View(offerViewModel);
-        }
+        //public ActionResult Index()
+        //{
+        //    OfferViewModel offerViewModel = new OfferViewModel();
+        //    var offers = DAL.uof.OfferRepository.Get();
+        //    return View(offerViewModel);
+        //}
 
-        public ActionResult _Index()
-        {
-            var offers = DAL.uof.OfferRepository.Get();
-            return View(offers);
-        }
+        //public ActionResult _Index()
+        //{
+        //    var offers = DAL.uof.OfferRepository.Get();
+        //    return View(offers);
+        //}
 
         // GET: Offers/Details/5
-        public ActionResult Details(string url)
+        public async Task<ActionResult> Details(string url)
         {
             if (url == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             url = DAL.ClearSpecChars(url);
-            Offer offer = DAL.uof.OfferRepository.GetByField(f => f.Product.SEOurl == url);
+            Offer offer = await DAL.uof.OfferRepository.GetByFieldAsync(f => f.Product.SEOurl == url);
             
             if (offer == null)
             {

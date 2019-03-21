@@ -1,22 +1,22 @@
 ﻿using Stromatolite.DAL;
 using Stromatolite.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Threading.Tasks;
 
 namespace Stromatolite.Controllers
 {
     public class HomeController : Controller
     {
         private DataAccessLayer DAL = new DataAccessLayer();
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            OfferViewModel offerViewModel = new OfferViewModel();
-            ViewBag.Title = DAL.uof.GeneralSettingRepository.GetByField(f => f.SettingName == "Заголовок главной траницы (Title)").SettingValue;
-            ViewBag.MetaDescription = DAL.uof.GeneralSettingRepository.GetByField(f => f.SettingName == "MetaDescription").SettingValue;
-            ViewBag.MetaKeywords = DAL.uof.GeneralSettingRepository.GetByField(f => f.SettingName == "MetaKeywords").SettingValue;
+            OfferViewModel offerViewModel = await OfferViewModel.CreateAsync();
+            var title = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.SettingName == "Заголовок главной траницы (Title)");
+            ViewBag.Title = title.SettingValue;
+            var metaDescription = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.SettingName == "MetaDescription");
+            ViewBag.MetaDescription = metaDescription.SettingValue;
+            var metaKeywords = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.SettingName == "MetaKeywords");
+            ViewBag.MetaKeywords = metaKeywords.SettingValue;
             return View(offerViewModel);
         }
 
