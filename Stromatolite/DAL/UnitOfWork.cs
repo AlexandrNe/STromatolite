@@ -11,6 +11,7 @@ namespace Stromatolite.DAL
     {
         private StromatoliteModel context = new StromatoliteModel();
 
+        private GenericRepository<Article> articleRepository;
         private GenericRepository<ErrorLog> errorLogRepository;
         private GenericRepository<Currency> currencyRepository;
         private GenericRepository<GalCategory> galCategoryRepository;
@@ -25,6 +26,19 @@ namespace Stromatolite.DAL
         private GenericRepository<Unit> unitRepository;
 
         /****************************************************************************************************************************************/
+        public GenericRepository<Article> ArticleRepository
+        {
+            get
+            {
+                if (this.articleRepository == null)
+                {
+                    this.articleRepository = new GenericRepository<Article>(context);
+                }
+                return articleRepository;
+            }
+        }
+
+
         public GenericRepository<ErrorLog> ErrorLogRepository
         {
             get

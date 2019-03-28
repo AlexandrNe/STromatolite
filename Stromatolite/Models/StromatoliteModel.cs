@@ -26,6 +26,7 @@
         // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
         // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
 
+        public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
         public virtual DbSet<GalCategory> GalCategories { get; set; }
         public virtual DbSet<Gallery> Galleries { get; set; }

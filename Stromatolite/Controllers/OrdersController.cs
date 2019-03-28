@@ -82,6 +82,72 @@ namespace Stromatolite.Controllers
             return PartialView(order);
         }
 
+        public ActionResult _CreateCall(Guid? offerID)
+        {
+            ViewBag.OfferID = offerID;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult _CreateCall([Bind(Include = "OrderID,PhoneNumber,FullName,Comment")] Order order, Guid? offerID, int? quantity)
+        {
+            if (ModelState.IsValid)
+            {
+                if (String.IsNullOrEmpty(order.PhoneNumber))
+                {
+                    ModelState.AddModelError("", "Нужно заполнить поле Номер телефона...");
+                }
+                else
+                {
+
+                    try
+                    {
+                        if (offerID == null)
+                        {
+                            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                        }
+                        var offer = DAL.uof.OfferRepository.GetByID(offerID);
+                        if (offer == null)
+                        {
+                            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                        }
+                        order.OrderID = Guid.NewGuid();
+                        order.OrderNum = CalcNum("");
+                        order.OrderDate = DateTime.UtcNow.AddHours(3);
+                        order.Closed = false;
+
+                        order.Comment = "<p>Наименование товара: " + "<em>" + offer.Product.TitleFull + "</em>" + "</p>" +
+                            "<p>Количество: " + "<em>" + quantity + "</em> " + offer.Unit.Title + "</p> </hr>" +
+                            DAL.tagStop(order.Comment);
+                        DAL.uof.OrderRepository.Insert(order);
+                        DAL.uof.Save();
+
+                        var notificationEmails = DAL.uof.NotificationEmailRepository.Get();
+                        foreach (var email in notificationEmails)
+                        {
+                            MailDelivery.MailSend(email.Email, "Принят заказ №" + order.OrderNum, "<h4>Принят заказ №" + order.OrderNum + " от " + order.OrderDate + "</h4>"
+                                + "<p>Email: <em><a href='mailto:" + order.Email + "'>" + order.Email + "</a></em></p>"
+                                + "<p>Тел.: <em>" + order.PhoneNumber + "</em></p>"
+                                + "<p>От: <em>" + order.FullName + "</em></p>"
+                                + order.Comment);
+                        }
+
+                        return PartialView("_Result", order.OrderNum);
+
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+                }
+            }
+
+            return PartialView(order);
+        }
+
         public ActionResult _Callback()
         {
             return View();

@@ -62,6 +62,32 @@ namespace Stromatolite
             bundles.Add(new StyleBundle("~/Content/revolution").Include(
                       "~/Content/revolution-slider/css/revolution-slider.css"));
 
+            #region tyny bundles
+            bundles.Add(new ScriptBundle("~/bundles/tinymce").Include("~/Scripts/tinymce/tinymce.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tiny").Include("~/Scripts/tiny.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tinyplugins").Include("~/Scripts/tinymce/plugins/advlist/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/autolink/plugin.min.js", "~/Scripts/tinymce/plugins/lists/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/link/plugin.min.js", "~/Scripts/tinymce/plugins/image/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/charmap/plugin.min.js", "~/Scripts/tinymce/plugins/print/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/preview/plugin.min.js", "~/Scripts/tinymce/plugins/hr/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/anchor/plugin.min.js", "~/Scripts/tinymce/plugins/pagebreak/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/searchreplace/plugin.min.js", "~/Scripts/tinymce/plugins/wordcount/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/visualblocks/plugin.min.js", "~/Scripts/tinymce/plugins/visualchars/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/code/plugin.min.js", "~/Scripts/tinymce/plugins/fullscreen/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/insertdatetime/plugin.min.js", "~/Scripts/tinymce/plugins/media/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/nonbreaking/plugin.min.js", "~/Scripts/tinymce/plugins/save/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/table/plugin.min.js", "~/Scripts/tinymce/plugins/contextmenu/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/directionality/plugin.min.js", "~/Scripts/tinymce/plugins/emoticons/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/template/plugin.min.js", "~/Scripts/tinymce/plugins/paste/plugin.min.js"
+                , "~/Scripts/tinymce/plugins/textcolor/plugin.min.js", "~/Scripts/tinymce/themes/modern/theme.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/tinycss").Include(
+                      "~/Content/skin.min.css",
+                      "~/Content/content.min.css"));
+            #endregion
+
         }
     }
 }

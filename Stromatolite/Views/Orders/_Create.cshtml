@@ -3,7 +3,7 @@
     Layout = null;
 }
 
-<div id="OF" class="container-fluid" style="padding:20px; background-color:white; width: 600px;height:600px;">
+<div id="OF" class="container-fluid" style="padding:20px; background-color:white; width: 600px;height:590px;">
 @using (Ajax.BeginForm("_Create", "Orders", new { area = string.Empty, offerID = ViewBag.OfferID }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "OF", InsertionMode = InsertionMode.ReplaceWith, LoadingElementId = "loadImg" }))
 {
     @Html.AntiForgeryToken()
@@ -32,7 +32,6 @@
         </div>
 
         <div class="form-group">
-            @*  @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label" })*@
 
             @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Введите Ваше имя" } })
             @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
@@ -41,8 +40,6 @@
 
 
         <div class="form-group">
-            @*   @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label" })*@
-
             @Html.TextAreaFor(model => model.Comment, 5, 80, new { @class = "form-control", placeholder = "Оставьте комментарий" })
             @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
 
@@ -53,7 +50,6 @@
             <div class="row">
                 <div class="col-md-5">
 
-                    @*<button onclick="yaCounter50066596.reachGoal('GET-ORDER'); return true;" type="submit" class="btn btn-ghost btn-primary icon-left" style="width:100%;"><i class="pe-7s-cart"></i>Отправить</button>*@
                     <button onclick="yaCounter50334613.reachGoal('GET-ORDER'); return true;" type="submit" class="btn btn-ghost btn-primary icon-left" style="width:100%;"><i class="pe-7s-cart"></i>Отправить</button>
                 </div>
                 <div class="col-md-2"></div>

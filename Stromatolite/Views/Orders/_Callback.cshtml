@@ -17,36 +17,23 @@
             @Html.HiddenFor(model => model.OrderDate)
 
             <div class="form-group">
-
                 @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Введите Ваш номер телефона...", @required = "required" } })
                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
-
             </div>
 
             <div class="form-group">
-
                 @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Введите Ваше имя..." } })
                 @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-
             </div>
 
-
-
             <div class="form-group">
-
                 @Html.TextAreaFor(model => model.Comment, 5, 80, new { @class = "form-control", @placeholder = "Оставьте комментарий..." })
                 @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
-
             </div>
 
-
-
             <div class="form-group">
-
                 <div class="row">
-                    <div class="col-md-5">
-                        
-                        @*<button onclick="yaCounter50066596.reachGoal('GET-CALL'); return true;" type="submit" class="btn btn-ghost btn-primary icon-left" style="width: 100%;"><i class="pe-7s-call"></i>Заказать звонок</button>*@
+                    <div class="col-md-5">  
                         <button onclick="yaCounter50334613.reachGoal('GET-CALL'); return true;" type="submit" class="btn btn-ghost btn-primary icon-left" style="width: 100%;"><i class="pe-7s-call"></i>Заказать звонок</button>
                     </div>
                     <div class="col-md-2"></div>
@@ -54,12 +41,7 @@
                         <span onclick="$.fancybox.close();" class="btn btn-primary waves-effect waves-light icon-left" style="width: 100%;"><i class="pe-7s-close"></i>Закрыть</span>
                     </div>
                 </div>
-
             </div>
-
-
-
-
 
         </div>
     }

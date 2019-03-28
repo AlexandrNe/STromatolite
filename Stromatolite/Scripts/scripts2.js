@@ -8,35 +8,20 @@
     function init() {
 
         var $map = $("#map");
-        var coordinates = $map.data('coordinates').split(',');
-        var title = $map.data('title');
-        var title2 = $map.data('title2');
-        var img = $map.data('img');
+        if ($map.length > 0) {
+            var coordinates = $map.data('coordinates').split(',');
+            var title = $map.data('title');
+            var title2 = $map.data('title2');
+            var img = $map.data('img');
 
-        myMap = new ymaps.Map($map[0], {
-            center: [coordinates[0], coordinates[1]],
-            zoom: 11
-            //controls: ['smallMapDefaultSet']
-        });
-        myMap.behaviors.disable('scrollZoom');
+            myMap = new ymaps.Map($map[0], {
+                center: [coordinates[0], coordinates[1]],
+                zoom: 11
+                //controls: ['smallMapDefaultSet']
+            });
+            myMap.behaviors.disable('scrollZoom');
 
-        //myGeoObject = new ymaps.GeoObject({ 
-        //    geometry: {
-        //        type: "Point",
-        //        coordinates: [coordinates[0], coordinates[1]]
-        //    },
-        //    properties: {
-        //        iconContent: title,
-        //        hintContent: '',
-        //        balloonContent: '<img width="100px" class="img-thumbnail" src="' + img + '" /><p style="width:150px;">' + title2 + '</p>'
-        //    }
-        //}, {
-
-        //    preset: 'islands#blueStretchyIcon'
-        //});
-
-        //myMap.geoObjects.add(myGeoObject);
-
+        };
 
     }
 

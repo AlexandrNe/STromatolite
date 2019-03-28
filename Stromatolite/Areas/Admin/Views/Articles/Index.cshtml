@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Stromatolite.Models.Article>
+
+@{
+    ViewBag.Title = "Редактирование статей";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "Create", null, new { @class = "btn btn-default" })
+</p>
+<table class="table table-hover table-responsive table-bordered table-striped">
+    <tr>
+     
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abstract)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.AddedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpireDate)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Approved)
+        </th>
+     
+    
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Abstract)
+        </td>
+   
+        <td>
+            @Html.DisplayFor(modelItem => item.AddedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleaseDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpireDate)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Approved)
+        </td>
+      
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.ArticleID }, new { @class = "btn btn-sm btn-primary pe-7s-pen" }) 
+            @Html.ActionLink(" ", "Details", new { id=item.ArticleID }, new { @class = "btn btn-sm btn-primary pe-7s-look" })
+            @Html.ActionLink(" ", "Delete", new { id = item.ArticleID }, new { @class = "btn btn-sm btn-primary pe-7s-trash" })
+        </td>
+    </tr>
+}
+
+</table>

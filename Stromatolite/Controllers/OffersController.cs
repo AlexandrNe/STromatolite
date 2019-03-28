@@ -15,21 +15,6 @@ namespace Stromatolite.Controllers
     {
         private DataAccessLayer DAL = new DataAccessLayer();
 
-        // GET: Offers
-        //public ActionResult Index()
-        //{
-        //    OfferViewModel offerViewModel = new OfferViewModel();
-        //    var offers = DAL.uof.OfferRepository.Get();
-        //    return View(offerViewModel);
-        //}
-
-        //public ActionResult _Index()
-        //{
-        //    var offers = DAL.uof.OfferRepository.Get();
-        //    return View(offers);
-        //}
-
-        // GET: Offers/Details/5
         public async Task<ActionResult> Details(string url)
         {
             if (url == null)
@@ -50,8 +35,6 @@ namespace Stromatolite.Controllers
             ViewBag.Title = offer.Product.TitleFull;
             return View(offer);
         }
-
-        // GET: Offers/Create
     
     }
 }

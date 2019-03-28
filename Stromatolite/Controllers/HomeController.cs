@@ -11,11 +11,11 @@ namespace Stromatolite.Controllers
         public async Task<ActionResult> Index()
         {
             OfferViewModel offerViewModel = await OfferViewModel.CreateAsync();
-            var title = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.SettingName == "Заголовок главной траницы (Title)");
+            var title = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.GeneralSettingID == 1);
             ViewBag.Title = title.SettingValue;
-            var metaDescription = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.SettingName == "MetaDescription");
+            var metaDescription = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.GeneralSettingID == 2);
             ViewBag.MetaDescription = metaDescription.SettingValue;
-            var metaKeywords = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.SettingName == "MetaKeywords");
+            var metaKeywords = await DAL.uof.GeneralSettingRepository.GetByFieldAsync(f => f.GeneralSettingID == 3);
             ViewBag.MetaKeywords = metaKeywords.SettingValue;
             return View(offerViewModel);
         }

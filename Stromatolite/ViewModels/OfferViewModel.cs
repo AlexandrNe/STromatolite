@@ -29,12 +29,6 @@ namespace Stromatolite.ViewModels
             return ret.InitializeAsync();
         }
 
-        //public OfferViewModel()
-        //{
-        //    await GetOffersAsync();
-        //    this.groups = DAL.uof.GroupRepository.Get(filter: f => f.Active, orderBy: q => q.OrderBy(d => d.Ord));
-
-        //}
         public IEnumerable<Offer> Offers { get { return this.offers; } }
         public IEnumerable<Group> Groups { get { return this.groups; } }
 

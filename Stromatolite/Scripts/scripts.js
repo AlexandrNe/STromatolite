@@ -495,6 +495,14 @@ jQuery(document).ready(function($) {
 
 			                }
 			            });
+			            $('.order-call').magnificPopup({
+			                type: 'ajax',
+			                elementParse: function (item) {
+			                    this.st.ajax.settings = item.el.data();
+
+			                }
+			            });
+
 
 			        }
 			    }
@@ -511,16 +519,7 @@ jQuery(document).ready(function($) {
 		}
 
 
-	    /***/
-		if ($('.order-call').length > 0) {
-		    $('.order-call').magnificPopup({
-		        type: 'ajax',
-		        elementParse: function (item) {
-		            this.st.ajax.settings = item.el.data();
-
-		        }
-		    });
-		}
+	    
 
 		$("a#order-call").fancybox({
 

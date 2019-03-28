@@ -179,6 +179,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticlesController.cs" />
     <Compile Include="Areas\Admin\Controllers\CurrenciesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ErrorLogsController.cs" />
     <Compile Include="Areas\Admin\Controllers\GalCategoriesController.cs" />
@@ -197,7 +198,6 @@
     <Compile Include="Areas\UserAccount\Controllers\ManageController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="DAL\DataAccessLayer.cs" />
     <Compile Include="DAL\GenericRepository.cs" />
     <Compile Include="DAL\IGenericRepository.cs" />
@@ -210,6 +210,7 @@
     <Compile Include="Areas\UserAccount\Models\IdentityModels.cs" />
     <Compile Include="Areas\UserAccount\Models\ManageViewModels.cs" />
     <Compile Include="Helpers\ImageHelpers.cs" />
+    <Compile Include="Models\Entities\Article.cs" />
     <Compile Include="Models\Entities\Currency.cs" />
     <Compile Include="Models\Entities\Offer.cs" />
     <Compile Include="Models\Entities\Product.cs" />
@@ -266,6 +267,10 @@
     <Compile Include="StromatoliteModelMigrations\201808051214500_v10.Designer.cs">
       <DependentUpon>201808051214500_v10.cs</DependentUpon>
     </Compile>
+    <Compile Include="StromatoliteModelMigrations\201903280135419_v11.cs" />
+    <Compile Include="StromatoliteModelMigrations\201903280135419_v11.Designer.cs">
+      <DependentUpon>201903280135419_v11.cs</DependentUpon>
+    </Compile>
     <Compile Include="StromatoliteModelMigrations\Configuration.cs" />
     <Compile Include="ViewModels\OfferViewModel.cs" />
   </ItemGroup>
@@ -274,6 +279,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\content.min.css" />
     <Content Include="Content\fancybox\blank.gif" />
     <Content Include="Content\fancybox\fancybox-x.png" />
     <Content Include="Content\fancybox\fancybox-y.png" />
@@ -333,6 +339,7 @@
     <Content Include="Content\revolution-slider\assets\transparent.png" />
     <Content Include="Content\revolution-slider\css\revolution-slider.css" />
     <Content Include="Content\revolution-slider\font\revicons.svg" />
+    <Content Include="Content\skin.min.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -491,6 +498,11 @@
     <Content Include="Areas\Admin\Views\ErrorLogs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ErrorLogs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ErrorLogs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
     <None Include="Properties\PublishProfiles\kamenmarket.pubxml" />
     <None Include="Properties\PublishProfiles\reg.ru.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -536,6 +548,7 @@
     <Content Include="Scripts\rs-tools.min.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\scripts2.js" />
+    <Content Include="Scripts\tiny.js" />
     <Content Include="Scripts\waves.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="sitemap.xml" />
@@ -579,11 +592,6 @@
     <Content Include="Views\Shared\_Slider.cshtml" />
     <Content Include="Views\Offers\Index.cshtml" />
     <Content Include="Views\Shared\_Topbar.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Offers\Details.cshtml" />
     <Content Include="Views\Shared\_About.cshtml" />
     <Content Include="Views\Orders\_Create.cshtml" />
@@ -595,6 +603,7 @@
     <Content Include="Views\Orders\_Result3.cshtml" />
     <Content Include="Views\Offers\_Details.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Orders\_CreateCall.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -640,6 +649,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StromatoliteModelMigrations\201808051214500_v10.resx">
       <DependentUpon>201808051214500_v10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StromatoliteModelMigrations\201903280135419_v11.resx">
+      <DependentUpon>201903280135419_v11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
