@@ -62,7 +62,7 @@ namespace Stromatolite
             bundles.Add(new StyleBundle("~/Content/revolution").Include(
                       "~/Content/revolution-slider/css/revolution-slider.css"));
 
-            #region tyny bundles
+
             bundles.Add(new ScriptBundle("~/bundles/tinymce").Include("~/Scripts/tinymce/tinymce.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/tiny").Include("~/Scripts/tiny.js"));
@@ -86,7 +86,10 @@ namespace Stromatolite
             bundles.Add(new StyleBundle("~/Content/tinycss").Include(
                       "~/Content/skin.min.css",
                       "~/Content/content.min.css"));
-            #endregion
+
+            //bundles.Add(new StyleBundle("~/Content/skmn").Include(
+            //          "~/Content/skin.min.css"));
+
 
         }
     }
