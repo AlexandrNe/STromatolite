@@ -194,6 +194,7 @@
     <Compile Include="Areas\Admin\Controllers\UnitsController.cs" />
     <Compile Include="Areas\UserAccount\UserAccountAreaRegistration.cs" />
     <Compile Include="Areas\UserAccount\Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\UserAccount\Controllers\ManageController.cs" />
     <Compile Include="Controllers\OffersController.cs" />
@@ -604,6 +605,11 @@
     <Content Include="Views\Offers\_Details.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Orders\_CreateCall.cshtml" />
+    <Content Include="Views\Articles\Create.cshtml" />
+    <Content Include="Views\Articles\Delete.cshtml" />
+    <Content Include="Views\Articles\Details.cshtml" />
+    <Content Include="Views\Articles\Edit.cshtml" />
+    <Content Include="Views\Articles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

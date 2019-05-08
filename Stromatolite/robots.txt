@@ -24,5 +24,5 @@ Disallow: /offers/_
 Disallow: /Orders/
 Disallow: /orders/
 
-Sitemap: http://xn----jtbaibejgdlgv5bj0q.xn--p1ai/sitemap.xml
-Host: xn----jtbaibejgdlgv5bj0q.xn--p1ai
+Sitemap: https://www.kamenmarket.com/sitemap.xml
+Host: www.kamenmarket.com

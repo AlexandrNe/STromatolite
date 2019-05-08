@@ -1,0 +1,11 @@
+﻿@model Stromatolite.Models.Article
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.MetaDescription = Model.MetaDescription;
+    ViewBag.MetaKeywords = Model.Keywords;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.Raw(Model.ArtBody)

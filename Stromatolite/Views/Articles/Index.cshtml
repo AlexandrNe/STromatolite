@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Stromatolite.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abstract)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.SeoUrl)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Abstract)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.SeoUrl)
+        </td>
+       
+        <td>
+
+            @Html.ActionLink("Details", "Details", new { url=item.SeoUrl })
+
+        </td>
+    </tr>
+}
+
+</table>

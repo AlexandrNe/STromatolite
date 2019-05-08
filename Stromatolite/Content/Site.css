@@ -280,6 +280,14 @@
         margin-bottom: 30px;
     }
 
+
+  /*.single_gallery_item {
+        width: 20%;
+    }*/
+
+
+
+
     .single_gallery_item {
         display: inline-block;
         float: left;
@@ -290,6 +298,21 @@
         margin-left:15px;
         margin-right:15px;
         margin-bottom:15px;
+    }
+
+    .gallery_full_width_images_area{
+        margin-left: 10%;
+    }
+
+         @media only screen and (max-width: 800px) {
+  .single_gallery_item {
+        width: 40%;
+    }
+}
+
+    @media only screen and (max-width: 500px) {
+  .single_gallery_item {
+        width: 80%;
     }
 
     .column_single_gallery_item {
