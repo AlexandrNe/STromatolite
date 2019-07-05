@@ -62,6 +62,12 @@ namespace Stromatolite
             bundles.Add(new StyleBundle("~/Content/revolution").Include(
                       "~/Content/revolution-slider/css/revolution-slider.css"));
 
+            bundles.Add(new StyleBundle("~/Content/ArtStyle").Include(
+                    "~/Content/ArtStyle.css",
+                      "~/Content/animate.css"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/wow").Include("~/Scripts/wow.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/tinymce").Include("~/Scripts/tinymce/tinymce.min.js"));
 

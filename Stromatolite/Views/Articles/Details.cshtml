@@ -1,11 +1,12 @@
 ﻿@model Stromatolite.Models.Article
 
 @{
+    Layout = "~/Views/Shared/_LayoutArticle.cshtml";
     ViewBag.Title = Model.Title;
     ViewBag.MetaDescription = Model.MetaDescription;
     ViewBag.MetaKeywords = Model.Keywords;
 }
 
-<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Title</h3>
 
 @Html.Raw(Model.ArtBody)

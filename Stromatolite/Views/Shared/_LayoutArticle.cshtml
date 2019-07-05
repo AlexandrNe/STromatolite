@@ -11,7 +11,7 @@
   gtag('config', 'UA-125827870-1');
     </script>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     @{if (ViewBag.MetaDescription == null)
@@ -40,8 +40,8 @@
     <link rel="icon" href="~/img/favicon.ico" type="image/x-icon">
 
     <!-- Vendor Styles -->
-    @Styles.Render("~/Content/revolution")
-   
+    @*@Styles.Render("~/Content/revolution")*@
+
 
     <!--Modernizr / Detectizr-->
     @Styles.Render("~/Content/masterslider/css")
@@ -53,33 +53,33 @@
     @RenderSection("css", required: false)
 
     @*<!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter50066596 = new Ya.Metrika2({
-                    id:50066596,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true
-                });
-            } catch(e) { }
-        });
+        <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter50066596 = new Ya.Metrika2({
+                        id:50066596,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true
+                    });
+                } catch(e) { }
+            });
 
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/tag.js";
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
 
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks2");
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/50066596" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->*@
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+        </script>
+        <noscript><div><img src="https://mc.yandex.ru/watch/50066596" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->*@
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
     (function (d, w, c) {
@@ -123,10 +123,10 @@
 
     @Html.Partial("_Navbar")
 
-    @Html.Partial("_Slider")
+  @*  @Html.Partial("_Slider")*@
     @**************************************************************************************************@
     <!-- Hero -->
-    <section class="section-fw section-css-parallax text-light" style="background-image:url(img/homepage/corporate/fullwidth-slider/back02.jpg);">
+    @*<section class="section-fw section-css-parallax text-light" style="background-image:url(img/homepage/corporate/fullwidth-slider/back02.jpg);">
         <div class="container text-light">
             <div class="row" style="margin-top:100px;margin-bottom:100px;">
                 <div class="col-md-2"></div>
@@ -139,30 +139,22 @@
             </div>
         </div>
 
-    </section><!-- Hero End -->
+    </section>*@<!-- Hero End -->
     @****************************************************************************************************************@
 
-   @* <div class="body-content">*@
+    <div class="container body-content" style="padding-top: 25px;padding-bottom: 25px;">
         @RenderBody()
-    @{Html.RenderAction("_Index", "Articles"); }
-    @Html.Partial("_About")
+    </div>
+   @* @{Html.RenderAction("_Index", "Articles"); }*@
+    @*@Html.Partial("_About")*@
 
-    
+
     @****************************************************************************************************************@
     <section>
         <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="54.75,58.19" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
-        <!-- Collapsable version -->
-        @*<div class="map-collapse">
-            <div class="map-collapse-toggle" data-collapse-title="Свернуть карту" data-expand-title="Развернуть карту">
-                <i class="pe-7s-map"></i>
-                <span>Свернуть карту</span>
-            </div>
-    
-            <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="56.843255,60.660069" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
-
-        </div>*@
+       
     </section>
-        <hr />
+    <hr />
     <footer itemscope itemtype="http://schema.org/Organization">
         <p>
             &copy; @DateTime.Now.Year –
@@ -177,7 +169,7 @@
             </span>
         </p>
     </footer>
-   @* </div>*@
+    @* </div>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -186,7 +178,7 @@
     @Scripts.Render("~/bundles/jqueryui")
 
 
-    @Scripts.Render("~/bundles/revolution")
+   @* @Scripts.Render("~/bundles/revolution")*@
 
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
@@ -210,6 +202,6 @@
 
     @RenderSection("scripts", required: false)
 
-    
+
 </body>
 </html>

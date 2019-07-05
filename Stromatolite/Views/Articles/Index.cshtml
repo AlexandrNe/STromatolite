@@ -2,9 +2,78 @@
 
 @{
     ViewBag.Title = "Index";
+    int i = 0;
 }
 
-<h2>Index</h2>
+<div id="wrapper">
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>ИНТЕРЕСНАЯ ИНФОРМАЦИЯ</h1>
+                </div>
+                <div class="col-sm-6 hidden-xs text-right">
+                    <ol class="breadcrumb">
+                        <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+                        <li>Статьи</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div><!--breadcrumbs-->
+
+    <div class="container">
+        <ul class="timeline">
+
+            @foreach (Stromatolite.Models.Article article in Model)
+            {
+                i++;
+                string tl = i % 2 == 0 ? "timeline-inverted" : "";
+                string ic = i % 2 == 0 ? "invert" : "";
+                <li class="@tl">
+                    <div class="timeline-badge primary"><i class="fa fa-file-text @ic"></i></div>
+                    <div class="timeline-panel wow animated fadeInUp">
+                        <div class="timeline-heading">
+                            @if (string.IsNullOrEmpty(article.ImgUrl))
+                            {
+                                <img class="img-responsive" src="~/images/articles/img-5.jpg" alt="" />
+                            }
+                            else
+                            {
+                                <img class="img-responsive" src="@Url.Content(article.ImgUrl)" alt="" />
+                            }
+
+                        </div>
+                        <div class="timeline-body">
+                            <h2>
+                                @Html.ActionLink(@article.Title, "Details", "Articles", new { seoUrl = article.SeoUrl }, null)
+                            </h2>
+                            <ul class="list-inline post-detail">
+                      
+                                <li><i class="fa fa-calendar"></i> @Html.DisplayFor(item => article.ReleaseDate)</li>
+                            </ul>
+                            @Html.Raw(article.Abstract)
+                            @Html.ActionLink("Подробнее", "Details", "Articles", new { seoUrl = article.SeoUrl }, new { @Class = "btn border-theme more" })
+ 
+                        </div>
+                    </div>
+                </li>
+
+            }
+           
+            <li class="clearfix" style="float: none;"></li>
+        </ul>
+
+
+
+
+
+
+        
+    </div>
+</div>
+@* ******************************************************************************************** *@
+@*<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -47,4 +116,30 @@
     </tr>
 }
 
-</table>
+</table>*@
+
+
+@section css{
+
+    @Styles.Render("~/Content/ArtStyle")
+}
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/wow")
+
+    <script>
+        $(document).ready(function () {
+            var wow = new WOW(
+                    {
+                        boxClass: 'wow', // animated element css class (default is wow)
+                        animateClass: 'animated', // animation css class (default is animated)
+                        offset: 100, // distance to the element when triggering the animation (default is 0)
+                        mobile: false        // trigger animations on mobile devices (true is default)
+                    }
+            );
+            wow.init();
+        });
+    </script>
+
+}

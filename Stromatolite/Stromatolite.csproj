@@ -276,6 +276,8 @@
     <Compile Include="ViewModels\OfferViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\ArtStyle.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -551,6 +553,7 @@
     <Content Include="Scripts\scripts2.js" />
     <Content Include="Scripts\tiny.js" />
     <Content Include="Scripts\waves.min.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="sitemap.xml" />
     <Content Include="Web.config">
@@ -610,6 +613,8 @@
     <Content Include="Views\Articles\Details.cshtml" />
     <Content Include="Views\Articles\Edit.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\Articles\_Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

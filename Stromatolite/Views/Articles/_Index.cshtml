@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Stromatolite.Models.Article>
+@{ 
+    Layout = null;
+    int i = 0;
+}
+<div id="wrapper" style="margin-top:50px;">
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3>ИНФОРМАЦИЯ</h3>
+                </div>
+            </div>
+        </div>
+    </div><!--breadcrumbs-->
+
+    <div class="container">
+        <ul class="timeline">
+
+            @foreach (Stromatolite.Models.Article article in Model)
+            {
+                i++;
+                string tl = i % 2 == 0 ? "timeline-inverted" : "";
+                string ic = i % 2 == 0 ? "invert" : "";
+                <li class="@tl">
+                    <div class="timeline-badge primary"><i class="fa fa-file-text @ic"></i></div>
+                    <div class="timeline-panel wow animated fadeInUp">
+                        <div class="timeline-heading">
+                            @if (string.IsNullOrEmpty(article.ImgUrl))
+                            {
+                                <img class="img-responsive" src="~/images/articles/img-5.jpg" alt="" />
+                            }
+                            else
+                            {
+                                <img class="img-responsive" src="@Url.Content(article.ImgUrl)" alt="" />
+                            }
+
+                        </div>
+                        <div class="timeline-body">
+                            <h2>
+                                @Html.ActionLink(@article.Title, "Details", "Articles", new { seoUrl = article.SeoUrl }, null)
+                            </h2>
+                            <ul class="list-inline post-detail">
+
+                                <li><i class="fa fa-calendar"></i> @Html.DisplayFor(item => article.ReleaseDate)</li>
+                            </ul>
+                            @Html.Raw(article.Abstract)
+                            @Html.ActionLink("Подробнее", "Details", "Articles", new { url = article.SeoUrl }, new { @Class = "btn border-theme more", @style = "position:absolute;right:50px;" })
+
+                        </div>
+                    </div>
+                </li>
+
+            }
+
+            <li class="clearfix" style="float: none;"></li>
+        </ul>
+
+    </div>
+</div>

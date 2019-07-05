@@ -23,6 +23,12 @@ namespace Stromatolite.Controllers
             return View(articles);
         }
 
+        public PartialViewResult _Index()
+        {
+            var articles = DAL.uof.ArticleRepository.Get(filter: f => f.Approved, orderBy: q => q.OrderByDescending(d => d.ReleaseDate));
+            return PartialView(articles);
+        }
+
         // GET: Articles/Details/5
         public async Task<ActionResult> Details(string url)
         {
