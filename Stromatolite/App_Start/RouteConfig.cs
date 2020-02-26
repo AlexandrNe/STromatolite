@@ -14,6 +14,12 @@ namespace Stromatolite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Success",
+                url: "success/",
+                defaults: new { controller = "Orders", action = "Success" },
+                namespaces: new string[] { "Stromatolite.Controllers" });
+
+            routes.MapRoute(
                 name: "Product",
                 url: "product/{url}/{action}",
                 defaults: new { controller = "Offers", action = "Details", url = UrlParameter.Optional },

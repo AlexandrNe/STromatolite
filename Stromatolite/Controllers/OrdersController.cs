@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -254,6 +257,93 @@ namespace Stromatolite.Controllers
             return PartialView(order);
         }
 
+
+
+        public ActionResult _Payment()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult _Payment(string value, string description, string fio)
+        {
+          
+            string username = "615993"; string password = "live_c-e5Pztdi5FVfZxf6A7fmIJtbT8ndYX_kwxtgAtN9EI";
+            string credentials = String.Format("{0}:{1}", username, password);
+            byte[] credToBytes = Encoding.ASCII.GetBytes(credentials);
+            string b64 = Convert.ToBase64String(credToBytes);
+            string authorization = String.Concat("Basic ", b64);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://payment.yandex.net/api/v3/payments");
+            request.Method = "POST";
+            request.UserAgent = "Mozilla / 5.0(Windows NT 10.0; Win64; x64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 64.0.3282.140 Safari / 537.36 Edge / 17.17134";
+            request.Headers.Add("Authorization", authorization);
+            request.ContentType = "application/json; charset=UTF-8";
+
+
+            string IdempotenceKey = Guid.NewGuid().ToString();
+
+            request.Headers.Add("Idempotence-Key", IdempotenceKey);
+            request.KeepAlive = true;
+            request.Timeout = Timeout.Infinite;
+            request.Date = DateTime.UtcNow;
+
+            string pm = "{\"amount\": {\"value\": \"" + value 
+                + "\",\"currency\": \"RUB\"},\"capture\": true,\"confirmation\": {\"type\": \"redirect\",\"return_url\": \"https://www.kamenmarket.com/success\"},\"description\": \"" 
+                + description + " " + fio + "\"}";
+
+            var body = Encoding.UTF8.GetBytes(pm);
+            request.ContentLength = body.Length;
+            var m = "";
+            using (Stream stream = request.GetRequestStream())
+            {
+                stream.Write(body, 0, body.Length);
+                stream.Close();
+            }
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    var stream = response.GetResponseStream();
+                    var reader = new StreamReader(stream);
+                    m = reader.ReadToEnd();
+                    response.Close();
+                }
+            }
+            catch (WebException ex)
+            {
+                using (var stream = ex.Response.GetResponseStream())
+                using (var reader = new StreamReader(stream))
+                {
+                    m = reader.ReadToEnd();
+                }
+                return Content(m);
+            }
+            catch (Exception ex)
+            {
+
+                m = ex.Message;
+                return Content(m);
+            }
+
+            
+            var start = m.IndexOf("confirmation_url");
+            var start2 = m.IndexOf("https", start);
+            var end = m.IndexOf('"', start2);
+            var length = end - start2;
+            var confirmationUrl = m.Substring(start2, length);
+
+            return Redirect(confirmationUrl);
+        }
+
+        public ActionResult Success()
+        {
+            return View();
+        }
+
         private string CalcNum(string pref)
         {
             int curDayOfYear = -1 * DateTime.Today.DayOfYear;
@@ -268,5 +358,39 @@ namespace Stromatolite.Controllers
             MaxOrderNum = pref + maxNum.ToString("D7");
             return MaxOrderNum;
         }
+
+
     }
+
+    public static class SessionKeyGen
+    {
+        static readonly char[] AvailableCharacters = {
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '_'
+    };
+
+        internal static string GenerateKey(int length)
+        {
+            char[] identifier = new char[length];
+            byte[] randomData = new byte[length];
+
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                rng.GetBytes(randomData);
+            }
+
+            for (int idx = 0; idx < identifier.Length; idx++)
+            {
+                int pos = randomData[idx] % AvailableCharacters.Length;
+                identifier[idx] = AvailableCharacters[pos];
+            }
+
+            return new string(identifier);
+        }
+
+    }
+
 }

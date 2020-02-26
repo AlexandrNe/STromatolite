@@ -1,0 +1,56 @@
+﻿@model Stromatolite.Models.Order
+@{
+    Layout = null;
+}
+
+<div id="payment-modal">
+
+    @using (Html.BeginForm("_Payment", "Orders", method: FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <h4>Внести платеж</h4>
+            <hr>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input class="form-control text-box single-line" id="curVal" type="text" name="value" value="" placeholder="Введите сумму платежа" required />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input class="form-control text-box single-line" type="text" name="currency" value="RUB" readonly />
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="form-group">
+
+                
+
+                <input class="form-control text-box single-line" type="text" name="description" value="" placeholder="Введите данные договора" required />
+            </div>
+            <div class="form-group">
+                <input class="form-control text-box single-line" type="text" name="fio" value="" placeholder="Фамилия Имя Отчество" required />
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-5">
+                        <button type="submit" class="btn btn-ghost btn-primary icon-left" style="width: 100%;"><i class="pe-7s-credit"></i>Оплатить</button>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <span onclick="$.fancybox.close();" class="btn btn-primary waves-effect waves-light icon-left" style="width: 100%;"><i class="pe-7s-close"></i>Закрыть</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    }
+
+</div>
+
+

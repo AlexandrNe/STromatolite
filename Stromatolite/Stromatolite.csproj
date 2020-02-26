@@ -224,6 +224,7 @@
     <Compile Include="Models\Entities\GeneralSetting.cs" />
     <Compile Include="Models\Entities\NotificationEmail.cs" />
     <Compile Include="Models\Entities\ErrorLog.cs" />
+    <Compile Include="Models\Entities\Payment.cs" />
     <Compile Include="Notification\MailDelivery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -615,6 +616,9 @@
     <Content Include="Views\Articles\Index.cshtml" />
     <Content Include="Views\Articles\_Index.cshtml" />
     <Content Include="Views\Shared\_LayoutArticle.cshtml" />
+    <Content Include="Views\Orders\_Payment.cshtml" />
+    <Content Include="Views\Orders\Success.cshtml" />
+    <Content Include="Views\Shared\_Bottombar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

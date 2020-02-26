@@ -9,8 +9,23 @@
 
 /*Preloading Animation*/
 $(window).load(function() {
-	$('.preloader').delay(300).addClass('cloak');
+	$('.preloader').delay(200).addClass('cloak');
 });
+
+(function ($) {
+    $.fn.inputFilter = function (inputFilter) {
+        return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
+            if (inputFilter(this.value)) {
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            }
+        });
+    };
+}(jQuery));
 
 /*Document Ready*/////////////////////////////////////////////////////////////////////////////////
 jQuery(document).ready(function($) {
@@ -58,6 +73,8 @@ jQuery(document).ready(function($) {
 		});
 
 	} // Modernizr End
+
+    
 
 		/* Update Waypoints when notification is closed */
 		$('.notification .close').on('click', function() {
@@ -551,6 +568,61 @@ jQuery(document).ready(function($) {
 		    openEffect: 'elastic',
 		    closeEffect: 'elastic',
 		    modal: true
+		});
+
+	    /*****/
+		$("a#order-call2").fancybox({
+
+		    type: 'ajax',
+		    href: '/Orders/_Callback',
+
+		    fitToView: true,
+		    width: 'auto',
+		    height: 'auto',
+		    autoSize: true,
+		    scrolling: 'no',
+		    closeClick: false,
+		    openEffect: 'elastic',
+		    closeEffect: 'elastic',
+		    modal: true
+		});
+
+		$("a#order-price2").fancybox({
+
+		    type: 'ajax',
+		    href: '/Orders/_GetPrice',
+
+		    fitToView: true,
+		    width: 'auto',
+		    height: 'auto',
+		    autoSize: true,
+		    scrolling: 'no',
+		    closeClick: false,
+		    openEffect: 'elastic',
+		    closeEffect: 'elastic',
+		    modal: true
+		});
+        /******/
+
+		$("a#order-payment").fancybox({
+
+		    type: 'ajax',
+		    href: '/Orders/_Payment',
+
+		    fitToView: true,
+		    width: 'auto',
+		    height: 'auto',
+		    autoSize: true,
+		    scrolling: 'no',
+		    closeClick: false,
+		    openEffect: 'elastic',
+		    closeEffect: 'elastic',
+		    modal: true,
+		    beforeShow: function () {
+		        $("#curVal").inputFilter(function (value) {
+		            return /^-?\d*[.]?\d{0,2}$/.test(value);
+		        });
+		    }
 		});
 
 

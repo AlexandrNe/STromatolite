@@ -123,7 +123,7 @@
 
     @Html.Partial("_Navbar")
 
-    @Html.Partial("_Slider")
+ @*   @Html.Partial("_Slider")*@
     @**************************************************************************************************@
     <!-- Hero -->
     <section class="section-fw section-css-parallax text-light" style="background-image:url(img/homepage/corporate/fullwidth-slider/back02.jpg);">
@@ -132,7 +132,7 @@
                 <div class="col-md-2"></div>
                 <div class="col-md-9" style="background-color: rgba(51, 51, 51, 0.56);border-radius: 15px;">
                     <blockquote style="font-size:50px;" class="text-center">
-                        Все виды лемезита от производителя – от 130 руб./м<sup>2</sup>
+                        Все виды лемезита от производителя – от 168 руб./м<sup>2</sup>
                     </blockquote>
                 </div>
 
@@ -147,21 +147,21 @@
     @{Html.RenderAction("_Index", "Articles"); }
     @Html.Partial("_About")
 
-    
+    @Html.Partial("_Bottombar")
     @****************************************************************************************************************@
-    <section>
+   @* <section>
         <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="54.75,58.19" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
         <!-- Collapsable version -->
-        @*<div class="map-collapse">
+        <div class="map-collapse">
             <div class="map-collapse-toggle" data-collapse-title="Свернуть карту" data-expand-title="Развернуть карту">
                 <i class="pe-7s-map"></i>
                 <span>Свернуть карту</span>
             </div>
-    
+
             <div id="map" style="width:100%;height:500px;position:relative" class="map" data-coordinates="56.843255,60.660069" data-title="г. Катав-Ивановск" data-title2="ул. Цементников, 7" data-img='@Url.Content("~/img")'></div>
 
-        </div>*@
-    </section>
+        </div>
+    </section>*@
         <hr />
     <footer itemscope itemtype="http://schema.org/Organization">
         <p>

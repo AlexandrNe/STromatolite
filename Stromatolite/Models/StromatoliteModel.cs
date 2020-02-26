@@ -32,6 +32,7 @@
         public virtual DbSet<Gallery> Galleries { get; set; }
         public virtual DbSet<GeneralSetting> GeneralSettings { get; set; }
         public virtual DbSet<NotificationEmail> NotificationEmails { get; set; }
+        //public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
